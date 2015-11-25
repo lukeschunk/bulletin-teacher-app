@@ -162,7 +162,7 @@ footer {
 
 /*_____________________________________________MEDIA QUERIES_____________________________________________*/
 
-@media only screen and (max-width: 1050px) {
+@media all and (max-width: 1050px) {
     .create-box-text-container {
         display: none;
     }
@@ -186,7 +186,7 @@ footer {
     }
 }
 
-@media only screen and (max-width: 750px) {
+@media all and (max-width: 750px) {
     .create-box {
         width: 100%;
         height: 40vh;
