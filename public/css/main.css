@@ -1,0 +1,7 @@
+#home-background {
+    background-image: url(http://cdn.c.photoshelter.com/img-get2/I0000OAIu1k2SHzs/fit=1000x750/The-Gate-Oregon-2013.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    margin: 0 auto;
+}
