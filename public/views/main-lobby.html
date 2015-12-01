@@ -1,0 +1,34 @@
+<div class="lobby-container">
+
+    <div>
+      <img src="../../assets/logo-01.png">
+
+        <hr>
+        <h3 class="white"> Miss. Paige's Class</h3>
+        <div class="communities">
+
+          <ul>
+            <li  class="list"> COMMUNITIES </li>
+            <li> <button>Classroom </button> </li>
+            <li ng-repeat="community in communities"> <button>{{community}} </button></li>
+            <li> <button> <span> + </span>...</button></li>
+          </ul>
+
+          <ul>
+            <li  class="list"> DIRECT MESSAGES </li>
+            <li> <button>Classroom </button> </li>
+            <li ng-repeat="student in recentMessages"> <button>{{student}} </button></li>
+            <li> <button> <span> + </span>...</button></li>
+          </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="right-body">
+
+<input type="text" placeholder="This is my nice input box">
+
+
+</div>

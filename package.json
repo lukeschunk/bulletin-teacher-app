@@ -1,0 +1,30 @@
+{
+  "name": "mean-stack-app-saturday",
+  "version": "0.0.1",
+  "description": "mean stack app",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.2.5",
+    "morgan": "^1.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ladrillo/mean-stack-app-saturday.git"
+  },
+  "author": "Gabriel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ladrillo/mean-stack-app-saturday/issues"
+  },
+  "homepage": "https://github.com/Ladrillo/mean-stack-app-saturday#readme"
+}

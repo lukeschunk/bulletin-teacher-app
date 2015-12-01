@@ -1,0 +1,50 @@
+
+<body>
+
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!--    _____________________________________________ BOOTSTRAP THEME _____________________________________________-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/cosmo/bootstrap.css">
+
+</body>
+       <nav>
+        <img src="../../assets/logo-color-02.png">
+    </nav>
+<div class="container">
+
+    <div class="content-holder">
+
+        <div>
+            <h1> Miss Paige's Class </h1>
+            
+            <form role="search" ng-submit="addStudentToTable()">
+            <input ng-model="currentStudent.name" placeholder="student name">
+            <br>
+            <input ng-model="currentStudent.email" placeholder="student/parent email">
+            <br>
+            <button> Add Student </button>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="table-holder" id="block">
+        <table class="table table-hover table-margin">
+            <tr>
+                <th> Student Name </th>
+                <th></th>
+                <th> Email </th>
+            </tr>
+
+            <tr ng-click="deletePlayer(student)" ng-repeat="student in students">
+                <td ng-mouseover="show()"> {{ student.name }} </td>
+                <td> <span ng-show="clickToDelete"> </span></td>
+                <td> {{ student.email }} </td>
+            </tr>
+
+
+        </table>
+        
+    </div>
+
+
+</div>
