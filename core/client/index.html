@@ -6,14 +6,16 @@
     <title> Bulletin App </title>
     <!--    _____________________________________________CSS_____________________________________________-->
     <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="public/css/main.css">
-    <link rel="stylesheet" href="public/css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/normalize.css">
 
 
     <!--    _____________________________________________ANGULAR _____________________________________________-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
     <!--    _____________________________________________UI ROUTER_____________________________________________-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+<!--    _____________________________________________SOCKET.IO_____________________________________________-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.7/socket.io.js"></script>
 </head>
 
 <body>
@@ -22,10 +24,16 @@
 
     </div>
 
-    <script src="public/modules/app.js"></script>
-    <script src="public/controllers/home-controller.js"></script>
-    <script src="public/controllers/top-controller.js"></script>
-    <script src="public/controllers/lobby-controller.js"></script>
+    <script src="modules/app.js"></script>
+    <script src="features/home/home-controller.js"></script>
+    <!-- <script src="controllers/top-controller.js"></script> -->
+    <script src="features/main-lobby/lobby-controller.js"></script>
+    <script src="services/message.service.js"> </script>
+    <script src="services/user.service.js"> </script>
+
+    <!-- <script src="controllers/user.api.controller.js"></script> -->
+
+    <script src="services/socket.service.js"> </script>
 
 </body>
 

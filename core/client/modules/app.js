@@ -9,20 +9,14 @@ bulletinApp.config(function($stateProvider, $urlRouterProvider) {
 
         .state('home', {
             url: '/home',
-            templateUrl: './public/views/home-view.html',
+            templateUrl: './features/home/home-view.html',
             controller: 'homeController'
 
-        })
-
-        .state('createClass', {
-            url: '/create-class',
-            templateUrl: './public/views/create-class.html',
-            controller: 'homeController'
         })
 
         .state('mainLobby', {
             url: '/lobby',
-            templateUrl: './public/views/main-lobby.html',
+            templateUrl: './features/main-lobby/main-lobby.html',
             controller: 'lobbyController'
         })
 

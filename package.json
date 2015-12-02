@@ -8,9 +8,11 @@
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "express-session": "^1.12.1",
+    "http": "0.0.0",
     "method-override": "^2.3.5",
     "mongoose": "^4.2.5",
-    "morgan": "^1.6.1"
+    "morgan": "^1.6.1",
+    "socketio": "^1.0.0"
   },
   "devDependencies": {},
   "scripts": {

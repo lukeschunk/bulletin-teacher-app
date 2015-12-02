@@ -39,7 +39,7 @@ nav img {
     float: left;
 }
 
-ul {
+nav ul {
     list-style-type: none;
     float: right;
     line-height: 60px;
@@ -51,12 +51,12 @@ ul {
     border-radius: 5px;
 }
 
-li {
+nav li {
     float: left;
     display: inline-block;
 }
 
-a {
+nav a {
     display: inline-block;
     text-decoration: none;
     line-height: 1em;

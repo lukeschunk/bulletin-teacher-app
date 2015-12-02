@@ -16,7 +16,22 @@ var db = mongoose(),
     app = express();
 
 
+//SOCKET
+
+var http = require('http').Server(app);
+var socketio = require('socket.io');
+
+var io = socketio(http);
+
+io.on('connection', function (socket) {
+   console.log("a user has connected");
+    socket.on('message', function (message) { // event listener
+        console.log("the server just got a message!");
+        io.sockets.emit('messageFromServer', message);
+        });
+});
+
 // Let's listen for incoming calls!
-app.listen(port, function () {
+http.listen(port, function () {
     console.log('listening on ' + port);
 });

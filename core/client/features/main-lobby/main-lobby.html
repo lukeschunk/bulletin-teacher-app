@@ -28,7 +28,14 @@
 
 <div class="right-body">
 
-<input type="text" placeholder="This is my nice input box">
+  <ul>
+    <li>{{test}}</li>
+    <li>test</li>
+    <li>test</li>
+    <li ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}}</li>
+  </ul>
 
+<input type="text" placeholder="This is my nice input box" ng-model="messageText"> <button ng-click="postNewMessage(messageText)"> Click to Submit</button>
+<button ng-click="getUsers()"> This is button two</button>
 
 </div>
