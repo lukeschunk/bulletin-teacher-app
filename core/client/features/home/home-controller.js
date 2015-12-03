@@ -21,14 +21,21 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", f
         }
         counter++;
     };
-
+    //NG DIALOGS
     $scope.clickToOpen = function(testy) {
       ngDialog.open({
-        template: 'templateId',
+        template: 'createNewTemplate',
         scope: $scope
       });
     };
 
+    $scope.clickToOpenTwo = function() {
+      ngDialog.open({
+        template: 'loginTemplate',
+        scope: $scope
+      });
+    };
+    //CRUD FUNCTIONS
     $scope.postNewUser = function(newUser) {
       newUser.teacher = true;
       console.log("this is newUser", newUser);
@@ -40,7 +47,8 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", f
     };
 
     $scope.getOneUser = function(emailToCheckFor, passwordToCheckFor) {
-      userService.getUserById(emailToCheckFor, passwordToCheckFor)
+      console.log("hitting controller!");
+      userService.getUserByLogin(emailToCheckFor, passwordToCheckFor)
         .then(function(response) {
           console.log("we found a user with those credentials");
         })

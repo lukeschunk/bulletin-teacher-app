@@ -15,3 +15,12 @@
 
 
 </form>
+
+
+
+<form ng-submit="login()">
+  <h1>Login</h1>
+  <input type="text" ng-model="loginUser.email" placeholder="Email">
+  <input type="text" ng-model="loginUser.password" placeholder="Password">
+  <button ng-click="login()"> Login </button>
+</form>

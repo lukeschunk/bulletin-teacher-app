@@ -4,7 +4,7 @@
     <nav>
         <img src="../../assets/logo-white-01.png">
         <ul>
-            <li><a class="white" href="#">Login</a></li>
+            <li><a ng-click="clickToOpenTwo()" class="white" href="#">Login</a></li>
             <li><a class="white" href="#">Home</a></li>
             <li><a class="white" href="#">News</a></li>
             <li><a class="find-teacher white" href="contact.asp">Students or Parents – Find Your Class</a></li>
@@ -42,8 +42,9 @@
     </footer>
 -->
 </div>
+<!--    _____________________________________CREATE USER MODAL__________________________________________-->
 
-<script type="text/ng-template" id="templateId">
+<script type="text/ng-template" id="createNewTemplate">
  <h1>{{className}}</h1>
  <form ng-submit="createNewClass()">
    <input ng-model="newUser.firstName" placeholder="First Name">
@@ -53,9 +54,23 @@
 
    <input ng-model="newUser.password" placeholder="Password">
 
-   <button ng-click="postNewUser(newUser)">Create New User</button>
+   <button ng-click="postNewUser(newUser)" >Create New User</button>
 
 
  </form>
+
+</script>
+
+
+<!--    _____________________________________LOGIN MODAL__________________________________________-->
+
+<script type="text/ng-template" id="loginTemplate">
+<form ng-submit="login()">
+  <h1>Login</h1>
+  <input type="text" ng-model="loginUser.email" placeholder="Email">
+  <input type="text" ng-model="loginUser.password" placeholder="Password">
+  <button ng-click="getOneUser(loginUser.email, loginUser.password)"> Login </button>
+</form>
+
 
 </script>

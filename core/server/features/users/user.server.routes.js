@@ -10,4 +10,7 @@ module.exports = function (app) {
         .get(Ctrl.getOneUser)
         .put(Ctrl.putUser)
         .delete(Ctrl.deleteUser);
+
+    app.route('/api/users/login')
+      .post(Ctrl.login);
 };

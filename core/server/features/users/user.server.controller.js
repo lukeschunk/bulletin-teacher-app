@@ -59,4 +59,21 @@ exports.deleteUser = function (req, res, next) {
             if (err) res.status(500).send(err);
             else res.status(204).send('Removed');
         });
+
 };
+
+exports.login = function(req, res, next) {
+  console.log("exports.login being hit");
+  User.find({email: req.body.email})
+    .exec(function(err, response) {
+        console.log(err, response);
+       if(err) {
+         res.status(500).send(err)
+       } else if(!response.email) {
+         res.json("there is no user with that email");
+       } else if(response.password === req.body.password) {
+         res.send(response)
+       } else res.send(response);
+    })
+
+}

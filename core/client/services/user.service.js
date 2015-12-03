@@ -7,8 +7,12 @@ bulletinApp.service('userService', function ($http, $q) {
       });
   };
 
-  this.getUserById = function (id) {
-      return $http.get('/api/users/' + id)
+  this.getUserByLogin = function (emailToCheckFor, passwordToCheckFor) {
+    console.log("service is being hit!");
+      return $http.post('/api/users/login', {
+        email: emailToCheckFor,
+        password: passwordToCheckFor
+      })
         .then(function (response) {
 
             console.log('this is response from service' + response);
