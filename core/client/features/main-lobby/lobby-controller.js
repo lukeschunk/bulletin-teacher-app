@@ -1,6 +1,6 @@
 bulletinApp.controller("lobbyController", ["$scope", "messageService", "userService", "socketService", function ($scope, messageService, userService, socketService) {
 
-
+    $scope.glued = true;
 
     $scope.test = "Hey there cutie";
 
@@ -70,6 +70,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         };
 
 
-
+      var element = document.getElementById("right-body");
+      element.scrollTop = element.scrollHeight;
 
 }]);

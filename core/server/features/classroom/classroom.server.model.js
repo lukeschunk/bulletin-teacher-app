@@ -4,14 +4,8 @@ var mongoose = require('mongoose'),
 
 var MessageSchema = new Schema({
 
-    content: {
+    className: {
       type: String
-    },
-    date: {
-      type: Date
-    },
-    sender: {
-      type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true
     }
 
 

@@ -39,7 +39,8 @@ nav img {
     float: left;
 }
 
-nav ul {
+nav ul,
+.lobby-container ul {
     list-style-type: none;
     float: right;
     line-height: 60px;
@@ -383,18 +384,28 @@ footer {
   border-radius: 20px;
 }
 
+.right-body-main {
+  float: left;
+  width: calc(100% - 220px);
+  height: 100vh;
+}
 
 .right-body {
   float: left;
-  height: 100vh;
-  width: calc(100% - 220px);
+  height: 700px;
+  width: 80%;
   background-color: white;
   position: relative;
+  overflow-y: scroll;
 }
 
-.right-body input {
-  position: absolute;
-  left: 40px;
-  bottom: 100px;
-  width: 80%;
+.right-body-main input {
+  width: 70%;
+  margin: auto;
+  margin-left: 30px;
+}
+
+.right-body-main button {
+  margin-left: 30px;
+  margin-top: 20px;
 }

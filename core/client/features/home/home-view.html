@@ -26,9 +26,9 @@
 
 
                 <div class="create-box-input-container">
-                <input placeholder="ex: Miss Paige's Class" ng-model="testy">
+                <input placeholder="ex: Miss Paige's Class" ng-model="className">
 
-                <button ui-sref="mainLobby" ng-click=saveClass();> Create a New Class </button>
+                <button  ng-click=clickToOpen(testy);> Create a New Class </button>
                 </div>
             </div>
         </div>
@@ -42,3 +42,20 @@
     </footer>
 -->
 </div>
+
+<script type="text/ng-template" id="templateId">
+ <h1>{{className}}</h1>
+ <form ng-submit="createNewClass()">
+   <input ng-model="newUser.firstName" placeholder="First Name">
+   <input ng-model="newUser.lastName" placeholder="Last Name">
+
+   <input ng-model="newUser.email" placeholder="Email">
+
+   <input ng-model="newUser.password" placeholder="Password">
+
+   <button ng-click="postNewUser(newUser)">Create New User</button>
+
+
+ </form>
+
+</script>

@@ -25,8 +25,8 @@
 
 </div>
 
-
-<div class="right-body">
+<div class="right-body-main">
+<div  scroll-glue="glued" class="right-body" id="right-body">
 
   <ul>
     <li>{{test}}</li>
@@ -34,8 +34,9 @@
     <li>test</li>
     <li ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}}</li>
   </ul>
-
-<input type="text" placeholder="This is my nice input box" ng-model="messageText"> <button ng-click="postNewMessage(messageText)"> Click to Submit</button>
+</div>
+<input type="text" placeholder="This is my nice input box" ng-model="messageText">
+<br>
+<button ng-click="postNewMessage(messageText)"> Click to Submit</button>
 <button ng-click="getUsers()"> This is button two</button>
-
 </div>

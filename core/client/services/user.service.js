@@ -25,7 +25,7 @@ bulletinApp.service('userService', function ($http, $q) {
       return $http.post('/api/users', user)
         .then(function(response) {
           console.log(response);
-          return "friend added!";
+          return "user added!";
         }, function(error) {
           console.log(error);
           return error;

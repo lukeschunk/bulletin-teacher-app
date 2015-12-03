@@ -3,7 +3,10 @@ var mongoose = require('mongoose'),
 
 
 var UserSchema = new Schema({
-    name: {
+    firstName: {
+        type: String
+    },
+    lastName: {
         type: String
     },
     teacher: {
@@ -12,7 +15,18 @@ var UserSchema = new Schema({
     email: {
       type: String
     },
-    
+    password: {
+      type: String
+    },
+    classesBelongTo : [
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Classe', required: true}
+    ],
+    starredMessages: [
+      {type:mongoose.Schema.Types.ObjectId, ref: 'Message', required: false}
+    ],
+    image: {
+      type: String
+    }
 });
 
 

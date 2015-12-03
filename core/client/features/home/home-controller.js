@@ -1,5 +1,5 @@
-bulletinApp.controller("homeController", ["$scope", function ($scope) {
-    $scope.test = "Hey there cutie";
+bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", function ($scope, ngDialog, userService) {
+    $scope.test = "Hey there buddy";
 
     $scope.saveClass = function () {
 
@@ -21,5 +21,29 @@ bulletinApp.controller("homeController", ["$scope", function ($scope) {
         }
         counter++;
     };
+
+    $scope.clickToOpen = function(testy) {
+      ngDialog.open({
+        template: 'templateId',
+        scope: $scope
+      });
+    };
+
+    $scope.postNewUser = function(newUser) {
+      newUser.teacher = true;
+      console.log("this is newUser", newUser);
+      userService.postNewUser(newUser)
+        .then(function(response) {
+          console.log("New User Posted - info from home-controller");
+        })
+        $scope.newUser = {};
+    };
+
+    $scope.getOneUser = function(emailToCheckFor, passwordToCheckFor) {
+      userService.getUserById(emailToCheckFor, passwordToCheckFor)
+        .then(function(response) {
+          console.log("we found a user with those credentials");
+        })
+    }
 
 }]);
