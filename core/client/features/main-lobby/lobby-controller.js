@@ -19,15 +19,18 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       "Erica",
       "Christina"
     ];
-
+    //GET MESSAGES
     $scope.getMessages = function() {
       messageService.getMessages()
       .then(function(response) {
         $scope.messages = response;
       })
     }
+    //INVOKING GET MESSAGES SO PAGE LOADS WITH MESSAGES LOADED
     $scope.getMessages();
 
+
+    //POST NEW MESSAGE ( ALSO GETS MESSAGE AND EMITS SOCKET )
     $scope.postNewMessage = function(messageText) {
       var newMessage = {
         content: messageText,
@@ -41,7 +44,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         .then(function(response) {
           messageService.getMessages()
             .then(function (response) {
-              console.log('this is response.data', response);
+              console.log('this is sresponse.data', response);
               $scope.messages = response;
             })
         });
@@ -49,6 +52,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
     };
 
+    //SOCKET LISTENER TO POST MESSAGE COMING BACK FROM SERVER
     socketService.on('messageFromServer', function(messageObjectFromServer) {
         console.log("this is messageFromServer(onController)", messageObjectFromServer);
         $scope.messages.push(messageObjectFromServer);
