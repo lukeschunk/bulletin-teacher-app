@@ -2,8 +2,10 @@ var Ctrl = require('./classroom.server.controller');
 
 module.exports = function (app) {
 
-  app.route('/api/messages')
-    .get(Ctrl.getMessages)
-    .post(Ctrl.postMessage);
+  app.route('/api/classroom')
+    .get(Ctrl.getClassrooms)
+    .post(Ctrl.postClassroom);
 
+  // app.route('/api/classroom/find')
+  //   .post(Ctrl.findClass);
 }

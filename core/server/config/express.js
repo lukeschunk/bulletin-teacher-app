@@ -50,6 +50,7 @@ module.exports = function () {
     // HERE WE CONFIGURE THE ROUTES
     require('../features/users/user.server.routes')(app);
     require('../features/messages/message.server.routes')(app);
+    require('../features/classroom/classroom.server.routes')(app);
 
     // THIS WILL BE THE ROOT OF THE ANGULAR APP
     // the route is relative to the root of the project

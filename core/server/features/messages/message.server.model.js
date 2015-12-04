@@ -11,7 +11,7 @@ var MessageSchema = new Schema({
       type: Date
     },
     sender: {
-      type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true
+      type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false
     }
 
 

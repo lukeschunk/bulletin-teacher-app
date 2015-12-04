@@ -4,7 +4,7 @@
     <nav>
         <img src="../../assets/logo-white-01.png">
         <ul>
-            <li><a ng-click="clickToOpenTwo()" class="white" href="#">Login</a></li>
+            <li><a ng-click="clickToOpenLoginPrompt()" class="white" href="#">Login</a></li>
             <li><a class="white" href="#">Home</a></li>
             <li><a class="white" href="#">News</a></li>
             <li><a class="find-teacher white" href="contact.asp">Students or Parents – Find Your Class</a></li>
@@ -28,7 +28,7 @@
                 <div class="create-box-input-container">
                 <input placeholder="ex: Miss Paige's Class" ng-model="className">
 
-                <button  ng-click=clickToOpen(testy);> Create a New Class </button>
+                <button  ng-click="clickToOpen()"> Create a New Class </button>
                 </div>
             </div>
         </div>
@@ -42,22 +42,39 @@
     </footer>
 -->
 </div>
+
+
+
 <!--    _____________________________________CREATE USER MODAL__________________________________________-->
 
 <script type="text/ng-template" id="createNewTemplate">
- <h1>{{className}}</h1>
- <form ng-submit="createNewClass()">
-   <input ng-model="newUser.firstName" placeholder="First Name">
-   <input ng-model="newUser.lastName" placeholder="Last Name">
+<div ng-show="showMe">
+<h1>{{className}}</h1>
+<form ng-submit="createNewClass()">
+  <input ng-model="newUser.firstName" placeholder="First Name">
+  <input ng-model="newUser.lastName" placeholder="Last Name">
 
-   <input ng-model="newUser.email" placeholder="Email">
+  <input ng-model="newUser.email" placeholder="Email">
 
-   <input ng-model="newUser.password" placeholder="Password">
+  <input ng-model="newUser.password" placeholder="Password">
 
-   <button ng-click="postNewUser(newUser)" >Create New User</button>
+  <button class="ngdialog-button ngdialog-button-primary" ng-click="postNewUser(newUser)">Create New User</button>
 
 
- </form>
+
+</form>
+
+</div>
+
+
+<div ng-hide="showMe">
+<h1>{{className}}</h1>
+
+<h2> "Great! Thanks for making a new class, {{newUser.firstName }}. Let's show you to your new class lobby!"</h2>
+
+<button class="ngdialog-button ngdialog-button-primary" ng-click="goToLobby()">Take Me To My Class!</button>
+
+</div>
 
 </script>
 
@@ -65,11 +82,11 @@
 <!--    _____________________________________LOGIN MODAL__________________________________________-->
 
 <script type="text/ng-template" id="loginTemplate">
-<form ng-submit="login()">
+<form ng-submit="login(loginUser.email, loginUser.password)">
   <h1>Login</h1>
   <input type="text" ng-model="loginUser.email" placeholder="Email">
   <input type="text" ng-model="loginUser.password" placeholder="Password">
-  <button ng-click="getOneUser(loginUser.email, loginUser.password)"> Login </button>
+  <button type="submit"> Login </button>
 </form>
 
 

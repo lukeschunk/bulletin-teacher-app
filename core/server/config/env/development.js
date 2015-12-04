@@ -1,4 +1,4 @@
 module.exports = {
-    db: 'mongodb://username:password@ds031903.mongolab.com:31903/example',
+    db: "mongodb://lukeschunk:311university@ds041583.mongolab.com:41583/bulletin-database",
     sessionSecret: 'developmentSecret'
 };

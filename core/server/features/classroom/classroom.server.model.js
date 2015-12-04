@@ -6,7 +6,10 @@ var ClassroomSchema = new Schema({
 
     className: {
       type: String
-    }
+    },
+    usersInClass: [
+      {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false}
+    ]
 
 
 });
