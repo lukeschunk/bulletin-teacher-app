@@ -53,6 +53,7 @@ exports.postUser = function (req, res, next) {
 
 exports.deleteUser = function (req, res, next) {
     console.log("okay baby");
+    console.log("req.params.id", req.params.id);
     User.findById(req.params.id)
         .remove(function (err) {
 
@@ -76,15 +77,12 @@ exports.login = function(req, res, next) {
     });
 };
 
-exports.updateUserWithClassId = function(req, res, next) {
-  console.log("CONTROLLER IS BEING HITTTTT");
-  console.log("this is req.body", req.body);
-  console.log("this is req.params.id", req.params.id);
-
-  User.findByIdAndUpdate(req.params.id, {$push:{classesBelongTo: req.body }},
-    function (err, result) {
-    console.log("this is result", result);
-    if (err) return res.status(500).send(err);
-    else res.send(result);
+exports.updateUserWithClassId = function (req, res, next) {
+  User.findById(req.params.id, function(err, user) {
+    user.classesBelongTo.push(req.body.id);
+      user.save(function(err, updatedUser) {
+        if(err) return res.status(500).send(err);
+        else res.send(updatedUser);
+      })
   })
 }

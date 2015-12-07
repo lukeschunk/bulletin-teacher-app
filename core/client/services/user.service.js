@@ -44,10 +44,10 @@ bulletinApp.service('userService', function ($http, $q) {
         method: 'PUT',
         url: '/api/users/' + userId,
         dataType: 'json',
-        data: classroomId
+        data: {id: classroomId}
     }).then(function (response) {
         console.log("this is the response from service", response);
-        return "User Was Updated With Class Id";
+        return response.data;
     }, function (error) {
         console.log(error);
         return "Error";

@@ -1,4 +1,5 @@
-bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "$state", "classroomService", function ($scope, ngDialog, userService, $state, classroomService) {
+bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "$state", "classroomService", "lobbyService",
+  function ($scope, ngDialog, userService, $state, classroomService, lobbyService) {
     $scope.test = "Hey there buddy";
 
     $scope.saveClass = function () {
@@ -103,8 +104,14 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
           $scope.currentClass = response;
 
           console.log("this is $scope.currentUser 2", $scope.currentUser);
-          userService.updateUserWithClassId(response._id, $scope.currentUser._id);
+          userService.updateUserWithClassId(response._id, $scope.currentUser._id)
+            .then(function(response) {
+              lobby
+            })
+
         })
+        $scope.getOneUser($scope.currentUser.email, $scope.currentUser.password);
+
     }
 
 }]);
