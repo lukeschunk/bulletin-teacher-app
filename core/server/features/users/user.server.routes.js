@@ -8,9 +8,10 @@ module.exports = function (app) {
 
     app.route('/api/users/:id')
         .get(Ctrl.getOneUser)
-        .put(Ctrl.putUser)
-        .delete(Ctrl.deleteUser);
+        .delete(Ctrl.deleteUser)
+        .put(Ctrl.updateUserWithClassId);
 
     app.route('/api/users/login')
       .post(Ctrl.login);
+
 };

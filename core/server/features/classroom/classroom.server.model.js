@@ -10,19 +10,12 @@ var mongoose = require('mongoose'),
         usersInClass: [
           {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false}
         ],
-        groupsInClass:
+        messagesInClass:
         [
           {
-            groupName: { type: String },
-            usersInGroup: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false},
-            messagesInGroup:
-            [
-              {
-                content: { type: String},
-                date: {type: Date},
-                sender: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false}
-              }
-            ]
+            content: { type: String},
+            date: {type: Date},
+            sender: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false}
           }
         ]
 

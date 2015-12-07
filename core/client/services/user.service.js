@@ -30,12 +30,30 @@ bulletinApp.service('userService', function ($http, $q) {
       return $http.post('/api/users', user)
         .then(function(response) {
           console.log(response);
-          return "user added!";
+          return response;
         }, function(error) {
           console.log(error);
           return error;
         });
   };
+
+  this.updateUserWithClassId = function(classroomId, userId) {
+    console.log("this is classroomId", classroomId);
+    console.log("this is userID", userId);
+    return $http({
+        method: 'PUT',
+        url: '/api/users/' + userId,
+        dataType: 'json',
+        data: classroomId
+    }).then(function (response) {
+        console.log("this is the response from service", response);
+        return "User Was Updated With Class Id";
+    }, function (error) {
+        console.log(error);
+        return "Error";
+    })
+  }
+
 
 
 })

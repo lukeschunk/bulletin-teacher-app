@@ -1,4 +1,4 @@
-bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "$state", function ($scope, ngDialog, userService, $state) {
+bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "$state", "classroomService", function ($scope, ngDialog, userService, $state, classroomService) {
     $scope.test = "Hey there buddy";
 
     $scope.saveClass = function () {
@@ -43,7 +43,7 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
   }
 
     $scope.clickToOpen = function() {
-      $scope.postNewClass();
+      console.log("this is $scope.classname", $scope.className);
                 ngDialog.open({
                   template: 'createNewTemplate',
                   scope: $scope
@@ -60,6 +60,7 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
     }
 
     $scope.goToLobby = function() {
+      $scope.postNewClass($scope.newUser);
       $state.go('mainLobby');
       ngDialog.closeAll();
     }
@@ -70,7 +71,8 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
       console.log("this is newUser", newUser);
       userService.postNewUser(newUser)
         .then(function(response) {
-          console.log("New User Posted - info from home-controller");
+          $scope.currentUser = response.data;
+          console.log("this is $scope.currentUser", $scope.currentUser);
         })
         $scope.newUser = {};
     };
@@ -88,8 +90,21 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
     }
 
 
-    $scope.postNewClass = function(classToPost) {
+    $scope.postNewClass = function() {
 
+      var classToAdd = {
+        className: $scope.className,
+        usersInClass: [$scope.currentUser._id]
+      };
+
+      classroomService.postNewClass(classToAdd)
+        .then(function(response) {
+
+          $scope.currentClass = response;
+
+          console.log("this is $scope.currentUser 2", $scope.currentUser);
+          userService.updateUserWithClassId(response._id, $scope.currentUser._id);
+        })
     }
 
 }]);

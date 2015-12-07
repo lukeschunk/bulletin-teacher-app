@@ -19,7 +19,7 @@ var UserSchema = new Schema({
       type: String
     },
     classesBelongTo : [
-      {type: mongoose.Schema.Types.ObjectId, ref: 'Classe', required: true}
+      {type: mongoose.Schema.Types.ObjectId, ref: 'Classroom', required: true}
     ],
     starredMessages: [
       {type:mongoose.Schema.Types.ObjectId, ref: 'Message', required: false}

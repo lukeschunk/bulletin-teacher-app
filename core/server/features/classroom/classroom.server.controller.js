@@ -12,7 +12,7 @@ exports.getClassrooms = function (req, res, next) {
 };
 
 exports.postClassroom = function (req, res, next) {
-    console.log("controller is being hit");
+    console.log("controller is being hit", req.body);
     var classroom = new Classroom(req.body);
     classroom.save(function (err) {
 

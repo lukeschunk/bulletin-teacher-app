@@ -6,6 +6,4 @@ module.exports = function (app) {
     .get(Ctrl.getClassrooms)
     .post(Ctrl.postClassroom);
 
-  // app.route('/api/classroom/find')
-  //   .post(Ctrl.findClass);
 }

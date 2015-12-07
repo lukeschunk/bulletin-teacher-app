@@ -42,9 +42,9 @@ module.exports = function () {
     // MIDDLEWARE THAT RUNS ONLY IN DEVELOPMENT
 
     // a logger so we can see activity in the console
-    if (process.env.NODE_ENV === 'development') {
-        app.use(morgan('dev'));
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    //     app.use(morgan('dev'));
+    // }
 
 
     // HERE WE CONFIGURE THE ROUTES

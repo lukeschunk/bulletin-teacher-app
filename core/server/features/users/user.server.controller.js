@@ -34,25 +34,25 @@ exports.postUser = function (req, res, next) {
 };
 
 
-exports.putUser = function (req, res, next) {
-
-    User.findById(req.params.id)
-        .exec(function (err, user) {
-
-            if (err) res.status(500).send(err);
-            else {
-                user.name = req.body.name;
-                user.teacher = req.body.teacher;
-                user.email = req.body.email;
-                user.save();
-                res.json(user);
-            }
-        });
-};
+// exports.putUser = function (req, res, next) {
+//
+//     User.findByIdAndUpdate(req.params.id)
+//         .exec(function (err, user) {
+//
+//             if (err) res.status(500).send(err);
+//             else {
+//                 user.name = req.body.name;
+//                 user.teacher = req.body.teacher;
+//                 user.email = req.body.email;
+//                 user.save();
+//                 res.json(user);
+//             }
+//         });
+// };
 
 
 exports.deleteUser = function (req, res, next) {
-
+    console.log("okay baby");
     User.findById(req.params.id)
         .remove(function (err) {
 
@@ -73,6 +73,18 @@ exports.login = function(req, res, next) {
        } else {
          res.send(response);
        }
-    })
+    });
+};
 
+exports.updateUserWithClassId = function(req, res, next) {
+  console.log("CONTROLLER IS BEING HITTTTT");
+  console.log("this is req.body", req.body);
+  console.log("this is req.params.id", req.params.id);
+
+  User.findByIdAndUpdate(req.params.id, {$push:{classesBelongTo: req.body }},
+    function (err, result) {
+    console.log("this is result", result);
+    if (err) return res.status(500).send(err);
+    else res.send(result);
+  })
 }
