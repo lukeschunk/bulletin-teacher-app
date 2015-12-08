@@ -81,8 +81,11 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
       userService.getUserByLogin(loginUserEmail, loginUserPassword)
         .then(function(response) {
           console.log("alksjdglk", response);
+          console.log("response[0]", response[0].classesBelongTo[0]);
+          $scope.currentLoggedInUser = response[0];
           var loginClassId = response[0].classesBelongTo[0];
-          $state.go('mainLobby', {"classId":$scope.loginClassId});
+          $state.go('mainLobby', {"classId":loginClassId});
+          lobbyService.saveLoggedInUserData($scope.currentLoggedInUser);
 
         })
         ngDialog.closeAll();
