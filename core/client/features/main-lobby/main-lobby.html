@@ -42,9 +42,10 @@
 
 
 
+
 <script type="text/ng-template" id="addStudents">
 <h1> Add Students to Your Class </h1>
-<form ng-submit="addNewStudent(newStudent)">
+<form ng-model="myForm" ng-submit="addNewStudent(newStudent)">
   <input ng-model="newStudent.firstName" placeholder="First Name">
   <input ng-model="newStudent.lastName" placeholder="Last Name">
 
@@ -55,10 +56,12 @@
   <h3> Note: Student Password by Default will be Firstname.lastname </h3>
 
   <button class="ngdialog-button ngdialog-button-primary" type="submit">Add Student</button>
+  </form>
+
+  <button class="ngdialog-button ngdialog-button-primary" ng-click="closeModal()"> Done </button>
 
 
 
-</form>
 
 
 

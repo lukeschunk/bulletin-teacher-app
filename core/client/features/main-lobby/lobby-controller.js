@@ -28,6 +28,8 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       .then(function(response) {
         $scope.populatedClass = response;
         $scope.messages = $scope.populatedClass.messagesInClass;
+        //SOCKET
+        socketService.emit('message', $scope.messages);
         console.log("THIS IS %SCOPE>MESSAGES", $scope.messages);
       })
     }
@@ -48,27 +50,27 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       };
 
       // SOCKETS
-      socketService.emit('message', newMessage);
+
 
       messageService.postNewMessage(newMessage, currentClassId)
         .then(function(response) {
           console.log("THE .then is being hit");
           $scope.getMessages(currentClassId);
-            // .then(function (response) {
-            //   console.log('this is sresponse.data', response);
-            //   $scope.messages.push(response);
-            // })
-
         });
 
-$scope.messageText = "";
+        $scope.messageText = "";
     };
 
     //SOCKET LISTENER TO POST MESSAGE COMING BACK FROM SERVER
-    socketService.on('messageFromServer', function(messageObjectFromServer) {
-        console.log("this is messageFromServer(onController)", messageObjectFromServer);
-        $scope.messages.push(messageObjectFromServer);
+
+    socketService.on('messageFromServer', function(messageArrayFromServer) {
+        console.log("in socket:", $scope.currentClassId);
+        console.log("message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
+        if(messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
+        console.log("this is messageArrayFromServer(onController)", messageArrayFromServer);
+        $scope.messages = messageArrayFromServer;
         $scope.$digest();
+        }
     });
 
 
@@ -115,9 +117,17 @@ $scope.messageText = "";
 
       userService.postNewUser(newUserToAdd)
         .then(function(response) {
-          console.log("this is our response", response);
+          $scope.loggedInUser = response.data;
+          console.log("This is $scope.loggedInUser", $scope.loggedInUser);
         })
 
+        console.log("this is $scope.newStudent", $scope.newStudent);
+        console.log("$scope.newStudent.firstName", $scope.newStudent.firstName);
+
+    }
+
+    $scope.closeModal = function() {
+      ngDialog.closeAll();
     }
 
 
