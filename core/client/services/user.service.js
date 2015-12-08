@@ -29,7 +29,7 @@ bulletinApp.service('userService', function ($http, $q) {
 
       return $http.post('/api/users', user)
         .then(function(response) {
-          console.log(response);
+          console.log("this is response from service", response);
           return response;
         }, function(error) {
           console.log(error);

@@ -21,4 +21,26 @@ exports.postClassroom = function (req, res, next) {
 
     });
 
+};
+
+exports.getMessagesFromClassroom = function(req, res, next) {
+  Classroom.findById(req.params.id)
+    .populate('usersInClass')
+    .populate('messagesInClass.sender')
+
+    .exec().then(function(populatedClass, err) {
+      if(err) res.send(err);
+      else res.status(200).send(populatedClass);
+    });
+};
+
+exports.postNewMessageOnClassroom = function(req, res, next) {
+  Classroom.findById(req.params.id)
+    .exec(function(err, classroom) {
+      classroom.messagesInClass.push(req.body);
+      classroom.save(function(err, data) {
+        if(err) res.send(err);
+        else res.status(200).send(data)
+      })
+    })
 }

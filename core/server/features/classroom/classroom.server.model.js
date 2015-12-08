@@ -14,11 +14,10 @@ var mongoose = require('mongoose'),
         [
           {
             content: { type: String},
-            date: {type: Date},
+            date: {type: Date, default: new Date},
             sender: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false}
           }
         ]
-
 
     });
 

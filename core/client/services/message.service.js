@@ -1,8 +1,9 @@
 bulletinApp.service('messageService', function ($http, $q) {
 
-  this.getMessages = function() {
-    return $http.get('/api/messages')
+  this.getMessages = function(classId) {
+    return $http.get('/api/classroom/' + classId)
       .then(function(response) {
+
         return response.data;
       });
   };
@@ -20,13 +21,12 @@ bulletinApp.service('messageService', function ($http, $q) {
         });
   };
 
-  this.postNewMessage = function(message) {
+  this.postNewMessage = function(message, id) {
 
-      return $http.post('/api/messages', message)
+      return $http.post('/api/classroom/' + id, message)
         .then(function(response) {
-          console.log(response);
-
-          return "message added!";
+          console.log("this is response ons ervice DLIUJT", response);
+          return response;
         }, function(error) {
           console.log(error);
           return error;

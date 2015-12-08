@@ -6,4 +6,7 @@ module.exports = function (app) {
     .get(Ctrl.getClassrooms)
     .post(Ctrl.postClassroom);
 
+  app.route('/api/classroom/:id')
+    .get(Ctrl.getMessagesFromClassroom)
+    .post(Ctrl.postNewMessageOnClassroom);
 }

@@ -1,71 +1,67 @@
 bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "$state", "classroomService", "lobbyService",
-  function ($scope, ngDialog, userService, $state, classroomService, lobbyService) {
+  function($scope, ngDialog, userService, $state, classroomService, lobbyService) {
     $scope.test = "Hey there buddy";
 
-    $scope.saveClass = function () {
+    $scope.saveClass = function() {
 
     }
 
     var counter = 1;
 
     $scope.students = [];
-    $scope.addStudentToTable = function () {
-        $scope.currentStudent.id = counter;
-        console.log("this is current student", $scope.currentStudent);
-        //Function below calls from the service
-        //        var valid = mainService.seeIfInputIsCorrect($scope.currentPlayer);
-        var valid = true;
-        if (valid) {
+    $scope.addStudentToTable = function() {
+      $scope.currentStudent.id = counter;
+      console.log("this is current student", $scope.currentStudent);
+      //Function below calls from the service
+      //        var valid = mainService.seeIfInputIsCorrect($scope.currentPlayer);
+      var valid = true;
+      if (valid) {
 
-            $scope.students.push($scope.currentStudent);
-            $scope.currentStudent = {};
-        }
-        counter++;
+        $scope.students.push($scope.currentStudent);
+        $scope.currentStudent = {};
+      }
+      counter++;
     };
     //NG DIALOGS
-    $scope.login = function(loginUserEmail, loginUserPassword) {
-      $scope.getOneUser(loginUserEmail, loginUserPassword);
-      $scope.goToLobby();
-      ngDialog.closeAll();
+
+
+
+
+    //MY TEST
+
+    $scope.showMe = true;
+
+    $scope.next = function() {
+      if ($scope.showMe) {
+        $scope.showMe = '';
+      } else {
+        $scope.showMe = true;
+      }
     }
-
-
-
-//MY TEST
-
-  $scope.showMe = true;
-
-  $scope.next = function() {
-    if($scope.showMe) {
-      $scope.showMe = '';
-    } else {
-      $scope.showMe = true;
-    }
-  }
 
     $scope.clickToOpen = function() {
       console.log("this is $scope.classname", $scope.className);
-                ngDialog.open({
-                  template: 'createNewTemplate',
-                  scope: $scope
-                  });
-            }
+      ngDialog.open({
+        template: 'createNewTemplate',
+        scope: $scope
+      });
+    }
 
 
 
     $scope.clickToOpenLoginPrompt = function() {
-          ngDialog.open({
-            template: 'loginTemplate',
-              scope: $scope
-          });
+      ngDialog.open({
+        template: 'loginTemplate',
+        scope: $scope
+      });
     }
 
     $scope.goToLobby = function() {
-      $scope.postNewClass($scope.newUser);
-      $state.go('mainLobby');
-      ngDialog.closeAll();
-    }
-    //CRUD FUNCTIONS
+        $scope.postNewClass($scope.newUser);
+
+        ngDialog.closeAll();
+      }
+      //CRUD FUNCTIONS
     $scope.postNewUser = function(newUser) {
       $scope.next();
       newUser.teacher = true;
@@ -75,18 +71,33 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
           $scope.currentUser = response.data;
           console.log("this is $scope.currentUser", $scope.currentUser);
         })
-        $scope.newUser = {};
+      $scope.newUser = {};
     };
+
+
+    //GET ONE USER FUNCTIONS
+
+    $scope.login = function(loginUserEmail, loginUserPassword) {
+      userService.getUserByLogin(loginUserEmail, loginUserPassword)
+        .then(function(response) {
+          console.log("alksjdglk", response);
+          var loginClassId = response[0].classesBelongTo[0];
+          $state.go('mainLobby', {"classId":$scope.loginClassId});
+
+        })
+        ngDialog.closeAll();
+    }
+
+    $scope.userLoggingIn = {};
 
 
 
     $scope.getOneUser = function(emailToCheckFor, passwordToCheckFor) {
-      console.log("this is emailToCheckFor", emailToCheckFor);
-      console.log("this is passwordToCheckFor", passwordToCheckFor);
-      console.log("hitting controller!");
+
       userService.getUserByLogin(emailToCheckFor, passwordToCheckFor)
         .then(function(response) {
-          console.log("we found a user with these credentials", response);
+          console.log("this is the response", response);
+          return response;
         })
     }
 
@@ -102,16 +113,19 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
         .then(function(response) {
 
           $scope.currentClass = response;
+          console.log("this is $scope.currentClass", $scope.currentClass);
 
-          console.log("this is $scope.currentUser 2", $scope.currentUser);
           userService.updateUserWithClassId(response._id, $scope.currentUser._id)
             .then(function(response) {
-              lobby
+              console.log("This is RESPONSE", response);
+              lobbyService.saveLoggedInUserData(response);
+              $state.go('mainLobby', {"classId":$scope.currentClass._id });
             })
 
         })
-        $scope.getOneUser($scope.currentUser.email, $scope.currentUser.password);
+      $scope.getOneUser($scope.currentUser.email, $scope.currentUser.password);
 
     }
 
-}]);
+  }
+]);
