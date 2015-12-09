@@ -1,5 +1,5 @@
 bulletinApp.controller("lobbyController", ["$scope", "messageService", "userService", "socketService", "lobbyService", "$stateParams", "ngDialog", "classroomService",
-  function ($scope, messageService, userService, socketService, lobbyService, $stateParams, ngDialog, classroomService) {
+  function($scope, messageService, userService, socketService, lobbyService, $stateParams, ngDialog, classroomService) {
 
     $scope.glued = true;
 
@@ -25,17 +25,17 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     //GET MESSAGES
     $scope.getMessages = function(classId) {
       messageService.getMessages(classId)
-      .then(function(response) {
+        .then(function(response) {
 
-        $scope.usersInClass = response.usersInClass;
-        console.log("this is GET MESSAGES RESPONSE", $scope.usersInClass);
-        $scope.populatedClass = response;
-        $scope.messages = $scope.populatedClass.messagesInClass;
-        //SOCKET
-        socketService.emit('message', $scope.messages);
-        console.log("THIS IS %SCOPE>MESSAGES", $scope.messages);
-        // getUsersInClass(classId);
-      })
+          $scope.usersInClass = response.usersInClass;
+          console.log("this is GET MESSAGES RESPONSE", $scope.usersInClass);
+          $scope.populatedClass = response;
+          $scope.messages = $scope.populatedClass.messagesInClass;
+          //SOCKET
+          socketService.emit('message', $scope.messages);
+          console.log("THIS IS %SCOPE>MESSAGES", $scope.messages);
+          // getUsersInClass(classId);
+        })
     };
     //INVOKING GET MESSAGES SO PAGE LOADS WITH MESSAGES LOADED
 
@@ -62,38 +62,38 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
           $scope.getMessages(currentClassId);
         });
 
-        $scope.messageText = "";
+      $scope.messageText = "";
     };
 
     //SOCKET LISTENER TO POST MESSAGE COMING BACK FROM SERVER
 
     socketService.on('messageFromServer', function(messageArrayFromServer) {
-        console.log("in socket:", $scope.currentClassId);
-        console.log("message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
-        if(messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
+      console.log("in socket:", $scope.currentClassId);
+      console.log("message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
+      if (messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
         console.log("this is messageArrayFromServer(onController)", messageArrayFromServer);
         $scope.messages = messageArrayFromServer;
         $scope.$digest();
-        }
+      }
     });
 
 
     $scope.getUsers = function() {
 
-            userService.getUsers()
-              .then(function(response) {
-                $scope.users = response;
-                console.log($scope.users);
-              })
-        };
+      userService.getUsers()
+        .then(function(response) {
+          $scope.users = response;
+          console.log($scope.users);
+        })
+    };
 
     $scope.myLoggedInUser = "";
 
     $scope.testOutService = function() {
-        $scope.getMessages($scope.currentClassId);
-        $scope.myLoggedInUser = lobbyService.myNewVar;
-        console.log("$scope.myLoggedInUser", $scope.myLoggedInUser);
-        return $scope.myLoggedInUser;
+      $scope.getMessages($scope.currentClassId);
+      $scope.myLoggedInUser = lobbyService.myNewVar;
+      console.log("$scope.myLoggedInUser", $scope.myLoggedInUser);
+      return $scope.myLoggedInUser;
     };
 
     $scope.testOutService();
@@ -129,9 +129,9 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
               $scope.getMessages($scope.currentClassId);
             })
         })
-        console.log("this is $scope.newStudent", $scope.newStudent); //this is undefined
+      console.log("this is $scope.newStudent", $scope.newStudent); //this is undefined
 
-        $scope.newStudent = {};
+      $scope.newStudent = {};
 
     };
 
@@ -142,7 +142,11 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.filledInStar = true;
 
     $scope.starMessage = function(message) {
-      $scope.filledInStar = !$scope.filledInStar;
+      for (var i = 0; i < $scope.messages; i++) {
+        if (messages[i].content === message.content) {
+          $scope.filledInStar = !$scope.filledInStar;
+        }
+      }
     }
 
     // function getUsersInClass(classId) {
@@ -151,6 +155,17 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     //       console.log("this is getUsersInClass", response);
     //     })
     // };
+    $scope.rightBodySideBar = true;
 
+    $scope.lookAtStudent = function(studentToPullUp) {
+      $scope.rightBodySideBar = !$scope.rightBodySideBar;
+      console.log("this is studentToPullUp", studentToPullUp);
+      $scope.studentToPullUp = {
+        firsName: studentToPullUp.firstName,
+        lastName: studentToPullUp.lastName,
+        email: studentToPullUp.email,
+        image: studentToPullUp.image
+      }
+    }
 
-}]);
+  }]);

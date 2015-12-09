@@ -12,7 +12,7 @@
         <div id="hidden-scroll">
           <div id="scrolling-div">
             <li ng-repeat="student in usersInClass">
-              <button>{{student.firstName}} {{student.lastName}} </button>
+              <button ng-click="lookAtStudent(student)">{{student.firstName}} {{student.lastName}} </button>
             </li>
           </div>
         </div>
@@ -27,6 +27,9 @@
 </div>
 
 <div class="right-body-main">
+  <header>
+    <h1>TEST TEST TEST</h1>
+  </header>
   <div scroll-glue="glued" class="right-body" id="right-body">
 
     <ul>
@@ -38,11 +41,14 @@
     </ul>
   </div>
 
-  <div class="right-body-sidebar">
+  <div ng-hide="rightBodySidebar" class="right-body-sidebar">
+    <div class="student-pull-up">
+      <div class="image-holder">
+          <img src="{{studentToPullUp.image}}" >
+      </div>
+      <h1> {{studentToPullUp.firstName}}</h1> <h1> {{studentToPullUp.lastName}}</h1>
 
-
-
-
+    </div>
 
   </div>
 

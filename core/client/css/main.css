@@ -414,7 +414,6 @@ footer {
 }
 
 .right-body-sidebar {
-  background-color: red;
   width: 27%;
   float: left;
   height: 100vh;
@@ -441,6 +440,14 @@ footer {
   height: 550px;
   overflow-y: auto;
   overflow-x: hidden;
+}
+
+.image-holder {
+  width: 100%;
+}
+
+.image-holder img {
+  width: 100%;
 }
 
 /*____________________________________________MESSAGE CSS_____________________________________________*/
