@@ -8,12 +8,11 @@
         <div class="communities">
 
           <ul>
-            <li  class="list"> COMMUNITIES </li>
-            <li> <button>Classroom </button> </li>
-            <li ng-repeat="community in communities"> <button>{{community}} </button></li>
+            <li  class="list"> STUDENTS </li>
+            <li ng-repeat="student in usersInClass"> <button>{{student.firstName}} {{student.lastName}} </button></li>
             <li> <button> <span> + </span>...</button></li>
           </ul>
-""
+
           <ul>
             <li  class="list"> DIRECT MESSAGES </li>
             <li> <button>Classroom </button> </li>
@@ -44,25 +43,21 @@
 <!-- DROPZONE -->
 
 <script type="text/ng-template" id="addStudents">
-<h1> Add Students to Your Class </h1>
-<form ng-model="myForm" ng-submit="addNewStudent(newStudent)">
-  <input ng-model="newStudent.firstName" placeholder="First Name">
-  <input ng-model="newStudent.lastName" placeholder="Last Name">
+  <h1> Add Students to Your Class </h1>
+  <form ng-model="myForm" ng-submit="addNewStudent(newStudent)">
+    <input ng-model="newStudent.firstName" placeholder="First Name">
+    <input ng-model="newStudent.lastName" placeholder="Last Name">
 
-  <input ng-model="newStudent.email" placeholder="Email">
+    <input ng-model="newStudent.email" placeholder="Email">
 
-  <input ng-model="newStudent.image" placeholder="imageUrl">
+    <input ng-model="newStudent.image" placeholder="imageUrl">
 
-  <h3> Note: Student Password by Default will be Firstname.lastname </h3>
+    <h3> Note: Student Password by Default will be Firstname.lastname </h3>
 
-  <button class="ngdialog-button ngdialog-button-primary" type="submit">Add Student</button>
+    <button class="ngdialog-button ngdialog-button-primary" type="submit">Add Student</button>
   </form>
 
   <button class="ngdialog-button ngdialog-button-primary" ng-click="closeModal()"> Done </button>
-
-
-
-
 
 
 </script>

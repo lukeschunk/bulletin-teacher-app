@@ -43,4 +43,25 @@ exports.postNewMessageOnClassroom = function(req, res, next) {
         else res.status(200).send(data)
       })
     })
+};
+
+exports.getUsersInClass = function(req, res, next) {
+  Clasrrom.findById(req.params.id)
+    .populate('usersInClass')
+    .exec(function (err, user) {
+      if(err) res.status(500).send(err);
+      else res.json(u)
+    })
 }
+
+
+
+exports.getOneUser = function (req, res, next) {
+
+    User.findById(req.params.id)
+        .exec(function (err, user) {
+
+            if (err) res.status(500).send(err);
+            else res.json(user);
+        });
+};

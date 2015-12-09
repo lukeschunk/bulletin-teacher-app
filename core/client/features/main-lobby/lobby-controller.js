@@ -26,13 +26,17 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.getMessages = function(classId) {
       messageService.getMessages(classId)
       .then(function(response) {
+
+        $scope.usersInClass = response.usersInClass;
+        console.log("this is GET MESSAGES RESPONSE", $scope.usersInClass);
         $scope.populatedClass = response;
         $scope.messages = $scope.populatedClass.messagesInClass;
         //SOCKET
         socketService.emit('message', $scope.messages);
         console.log("THIS IS %SCOPE>MESSAGES", $scope.messages);
+        // getUsersInClass(classId);
       })
-    }
+    };
     //INVOKING GET MESSAGES SO PAGE LOADS WITH MESSAGES LOADED
 
     $scope.getMessages($scope.currentClassId);
@@ -90,12 +94,11 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         $scope.myLoggedInUser = lobbyService.myNewVar;
         console.log("$scope.myLoggedInUser", $scope.myLoggedInUser);
         return $scope.myLoggedInUser;
-    }
+    };
 
     $scope.testOutService();
 
     $scope.addStudents = function() {
-      console.log("TEST 5083p98");
       ngDialog.open({
         template: 'addStudents',
         scope: $scope
@@ -103,7 +106,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     };
 
     $scope.addNewStudent = function(student) {
-      console.log("THIS IS STUDENT", student);
+      console.log("this is currentClassId", $scope.currentClassId);
       var newUserToAdd = {
         firstName: student.firstName,
         lastName: student.lastName,
@@ -113,23 +116,31 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         classesBelongTo: [$scope.currentClassId],
         image: student.image
       };
-      console.log("this is newUserToAdd", newUserToAdd);
 
       userService.postNewUser(newUserToAdd)
         .then(function(response) {
+          console.log("aiejfiejfijeijf", response);
           $scope.loggedInUser = response.data;
-          console.log("This is $scope.loggedInUser", $scope.loggedInUser);
+          var loggedInUserId = response.data._id;
+          classroomService.updateClassWithUser(loggedInUserId);
         })
+        console.log("this is $scope.newStudent", $scope.newStudent); //this is undefined
 
-        console.log("this is $scope.newStudent", $scope.newStudent);
-        console.log("$scope.newStudent.firstName", $scope.newStudent.firstName);
+        $scope.newStudent = {};
 
-    }
+    };
 
     $scope.closeModal = function() {
       ngDialog.closeAll();
-    }
+    };
 
+
+    // function getUsersInClass(classId) {
+    //   classroomService.getUsersInClass(classId)
+    //     .then(function(response) {
+    //       console.log("this is getUsersInClass", response);
+    //     })
+    // };
 
 
 }]);

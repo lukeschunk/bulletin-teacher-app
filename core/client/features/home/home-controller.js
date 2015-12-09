@@ -74,6 +74,7 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
 
 
 
+
     $scope.getOneUser = function(emailToCheckFor, passwordToCheckFor) {
 
       userService.getUserByLogin(emailToCheckFor, passwordToCheckFor)
