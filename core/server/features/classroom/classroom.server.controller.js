@@ -40,7 +40,7 @@ exports.postNewMessageOnClassroom = function(req, res, next) {
       classroom.messagesInClass.push(req.body);
       classroom.save(function(err, data) {
         if(err) res.send(err);
-        else res.status(200).send(data)
+        else res.status(200).send(data);
       })
     })
 };
@@ -52,16 +52,27 @@ exports.getUsersInClass = function(req, res, next) {
       if(err) res.status(500).send(err);
       else res.json(u)
     })
+};
+
+exports.updateClassWithUser = function(req, res, next) {
+  console.log("we're hitting the controller on the server");
+  Classroom.findById(req.params.id)
+    .exec(function(err, classroom) {
+      classroom.usersInClass.push(req.body.id);
+      classroom.save(function(err, data) {
+        if(err) res.send(err);
+        else res.status(200).send(data);
+      })
+    })
 }
 
 
-
-exports.getOneUser = function (req, res, next) {
-
-    User.findById(req.params.id)
-        .exec(function (err, user) {
-
-            if (err) res.status(500).send(err);
-            else res.json(user);
-        });
-};
+// exports.getOneUser = function (req, res, next) {
+//
+//     User.findById(req.params.id)
+//         .exec(function (err, user) {
+//
+//             if (err) res.status(500).send(err);
+//             else res.json(user);
+//         });
+// };

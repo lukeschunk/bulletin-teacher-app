@@ -1,5 +1,5 @@
-bulletinApp.controller("lobbyController", ["$scope", "messageService", "userService", "socketService", "lobbyService", "$stateParams", "ngDialog",
-  function ($scope, messageService, userService, socketService, lobbyService, $stateParams, ngDialog) {
+bulletinApp.controller("lobbyController", ["$scope", "messageService", "userService", "socketService", "lobbyService", "$stateParams", "ngDialog", "classroomService",
+  function ($scope, messageService, userService, socketService, lobbyService, $stateParams, ngDialog, classroomService) {
 
     $scope.glued = true;
 
@@ -121,8 +121,13 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         .then(function(response) {
           console.log("aiejfiejfijeijf", response);
           $scope.loggedInUser = response.data;
-          var loggedInUserId = response.data._id;
-          classroomService.updateClassWithUser(loggedInUserId);
+          var loggedInUserId = {
+            id: response.data._id
+          }
+          classroomService.updateClassWithUser(loggedInUserId, $scope.currentClassId)
+            .then(function(response) {
+              $scope.getMessages($scope.currentClassId);
+            })
         })
         console.log("this is $scope.newStudent", $scope.newStudent); //this is undefined
 
@@ -134,6 +139,11 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       ngDialog.closeAll();
     };
 
+    $scope.filledInStar = true;
+
+    $scope.starMessage = function(message) {
+      $scope.filledInStar = !$scope.filledInStar;
+    }
 
     // function getUsersInClass(classId) {
     //   classroomService.getUsersInClass(classId)

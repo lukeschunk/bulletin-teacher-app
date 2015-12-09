@@ -14,11 +14,17 @@ bulletinApp.service('classroomService', function($http, $q) {
       })
   };
 
-  this.updateClassWithUser = function(classId) {
-    return $http.put('/api/classroom/' + classId)
+  this.updateClassWithUser = function(userId, classId) {
+
+    console.log("this is userId on clasroom service", userId);
+    console.log("this is classId on classroom service", classId);
+
+    return $http.post('/api/classroom/users/' + classId, userId)
       .then(function (response) {
           return response.data;
       })
   }
+
+
 
 })

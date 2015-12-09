@@ -11,6 +11,6 @@ module.exports = function (app) {
     .post(Ctrl.postNewMessageOnClassroom);
 
 
-  // app.route('/api/classroom/users/:id')
-  //   .get(Ctrl.getUsersInClass);
+  app.route('/api/classroom/users/:id')
+    .post(Ctrl.updateClassWithUser);
 }

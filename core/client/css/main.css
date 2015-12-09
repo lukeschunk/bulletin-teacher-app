@@ -305,7 +305,7 @@ footer {
 */
 
 .lobby-container div:nth-child(1) {
-  width: 220px;
+  width: 240px;
   float: left;
   background-color: rgb(123, 207, 220);
   height: 100vh;
@@ -388,21 +388,39 @@ footer {
 
 .right-body-main {
   float: left;
-  width: calc(100% - 220px);
+  width: calc(100% - 240px);
   height: 100vh;
+  position: relative;
 }
 
 .right-body {
   float: left;
-  height: 700px;
-  width: 80%;
+  height: 84vh;
+  width: 73%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
+  float: left;
 }
 
-.right-body-main input {
+.right-body-bottom {
+  height: 10vh;
+  margin-top: 30px;
   width: 70%;
+  position: absolute;
+  bottom: 0px;
+  background-color: green;
+  padding-top: 30px;
+}
+
+.right-body-sidebar {
+  background-color: red;
+  width: 27%;
+  float: left;
+  height: 100vh;
+}
+.right-body-bottom input {
+  width: 90%;
   margin: auto;
   margin-left: 30px;
 }
@@ -412,6 +430,22 @@ footer {
   margin-top: 20px;
 }
 
-.ddeedd {
+.messageImage {
   width: 100px;
+}
+#hidden-scroll {
+  overflow: hidden;
+}
+
+#scrolling-div {
+  height: 550px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/*____________________________________________MESSAGE CSS_____________________________________________*/
+/*____________________________________________MESSAGE CSS_____________________________________________*/
+
+.star:hover {
+  color: orange;
 }
