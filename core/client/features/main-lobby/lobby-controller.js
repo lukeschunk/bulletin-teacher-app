@@ -17,6 +17,8 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         .then(function(response) {
           console.log("this is get messages response on getMessages controller", response);
           $scope.usersInClass = response.usersInClass;
+          console.log("This is $scope.usersInClass", $scope.usersInClass);
+
 
           $scope.populatedClass = response;
           console.log("this is POPULATED CLASS", $scope.populatedClass);
