@@ -22,10 +22,10 @@ bulletinApp.service('messageService', function ($http, $q) {
   };
 
   this.postNewMessage = function(message, id) {
-
+      console.log("This is MESSAGE ON SERVICE", message);
       return $http.post('/api/classroom/' + id, message)
         .then(function(response) {
-          console.log("this is response ons ervice DLIUJT", response);
+          console.log("THIS IS RESPONSE ON POST NEW MESSAGE SERVICE", response);
           return response;
         }, function(error) {
           console.log(error);

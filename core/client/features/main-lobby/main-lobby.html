@@ -33,10 +33,11 @@
   <div scroll-glue="glued" class="right-body" id="right-body">
 
     <ul>
-      <li ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}} SENDER: {{message.sender.firstName}}
+      <li scroll-glue ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}} SENDER: {{message.sender.firstName}}
         <img class="messageImage" src="{{message.sender.image}}" alt="">
-        <span> <i ng-show="filledInStar" ng-click="starMessage()" class="star fa-lg fa fa-star-o"></i> </span>
-        <span> <i ng-hide="filledInStar" ng-click="starMessage()" class="star fa-lg fa fa-star"></i> </span>
+        <!-- <span> <div class="testey"><img src="assets/star.png"></div></span> -->
+        <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
+        <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
       </li>
     </ul>
   </div>
@@ -56,7 +57,7 @@
 
   <input type="text" placeholder="This is my nice input box" ng-model="messageText">
   <br>
-  <button ng-click="postNewMessage(messageText, currentClassId, myLoggedInUser.id)"> Click to Submit</button>
+  <button ng-click="postNewMessage(messageText, currentClassId, currentUserId)"> Click to Submit</button>
   <button ng-click="getUsers()"> This is button two</button>
   <button ng-click="addStudents()"> ADD STUDENTS </button>
 

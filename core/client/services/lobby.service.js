@@ -1,6 +1,7 @@
 bulletinApp.service('lobbyService', function($http, $q) {
 
   this.saveLoggedInUserData = function(loggedInUser) {
+    console.log("this is loggedInUser", loggedInUser);
     var myLoggedInUser = {
       id: loggedInUser._id,
       classesBelongTo: loggedInUser.classesBelongTo,

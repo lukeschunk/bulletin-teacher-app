@@ -22,7 +22,7 @@ var UserSchema = new Schema({
       {type: mongoose.Schema.Types.ObjectId, ref: 'Classroom', required: true}
     ],
     starredMessages: [
-      {type:mongoose.Schema.Types.ObjectId, ref: 'Message', required: false}
+      {type:mongoose.Schema.Types.ObjectId, ref: 'Classroom', required: false}
     ],
     image: {
       type: String

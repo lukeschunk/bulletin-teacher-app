@@ -15,7 +15,7 @@ bulletinApp.config(function($stateProvider, $urlRouterProvider) {
         })
 
         .state('mainLobby', {
-            url: '/lobby/:classId',
+            url: '/lobby/:classId/:userId',
             templateUrl: './features/main-lobby/main-lobby.html',
             controller: 'lobbyController'
         })

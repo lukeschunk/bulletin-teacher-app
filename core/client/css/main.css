@@ -456,3 +456,21 @@ footer {
 .star:hover {
   color: orange;
 }
+
+.testey {
+  background-color: orange;
+  width: 30px;
+  height: 30px;
+}
+
+.testey img {
+  width: 30px;
+}
+
+.outline {
+  display: inline-block;
+}
+
+.fill {
+  display: none;
+}

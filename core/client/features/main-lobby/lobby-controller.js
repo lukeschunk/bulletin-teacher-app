@@ -1,35 +1,25 @@
 bulletinApp.controller("lobbyController", ["$scope", "messageService", "userService", "socketService", "lobbyService", "$stateParams", "ngDialog", "classroomService",
   function($scope, messageService, userService, socketService, lobbyService, $stateParams, ngDialog, classroomService) {
 
+
+
     $scope.glued = true;
-
-    $scope.communities = [
-      "Advanced Reading",
-      "Beginning Reading",
-      "Advancved Math",
-      "Beginning Math"
-    ];
-
-    $scope.recentMessages = [
-      "Gabe",
-      "Tim",
-      "Alexander",
-      "Sophia",
-      "Erica",
-      "Christina"
-    ];
 
     $scope.messages = [];
 
     $scope.currentClassId = $stateParams.classId;
+    $scope.currentUserId = $stateParams.userId.toString();
+
+    console.log("This is currentUSERID", $scope.currentUserId);
     //GET MESSAGES
     $scope.getMessages = function(classId) {
       messageService.getMessages(classId)
         .then(function(response) {
-
+          console.log("this is get messages response on getMessages controller", response);
           $scope.usersInClass = response.usersInClass;
-          console.log("this is GET MESSAGES RESPONSE", $scope.usersInClass);
+
           $scope.populatedClass = response;
+          console.log("this is POPULATED CLASS", $scope.populatedClass);
           $scope.messages = $scope.populatedClass.messagesInClass;
           //SOCKET
           socketService.emit('message', $scope.messages);
@@ -41,12 +31,20 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
     $scope.getMessages($scope.currentClassId);
 
+    // $scope.testOutService = function() {
+    //   $scope.getMessages($scope.currentClassId);
+    //   $scope.myLoggedInUser = lobbyService.myNewVar;
+    //
+    //   return $scope.myLoggedInUser;
+    // };
+    //
+    // $scope.testOutService();
 
     //POST NEW MESSAGE ( ALSO GETS MESSAGE AND EMITS SOCKET )
     $scope.postNewMessage = function(messageText, currentClassId, userId) {
-      console.log("XX", messageText);
-      console.log("XX", currentClassId);
-      console.log("XX", userId);
+      console.log("XX_messageText", messageText);
+      console.log("XX_ClassId", currentClassId);
+      console.log("XX_userId", userId);
       var newMessage = {
         content: messageText,
         date: new Date(),
@@ -58,7 +56,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
       messageService.postNewMessage(newMessage, currentClassId)
         .then(function(response) {
-          console.log("THE .then is being hit");
+
           $scope.getMessages(currentClassId);
         });
 
@@ -68,8 +66,8 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     //SOCKET LISTENER TO POST MESSAGE COMING BACK FROM SERVER
 
     socketService.on('messageFromServer', function(messageArrayFromServer) {
-      console.log("in socket:", $scope.currentClassId);
-      console.log("message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
+      console.log("SOCKET_this is messageArrayFromServer", messageArrayFromServer);
+      console.log("SOCKET_message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
       if (messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
         console.log("this is messageArrayFromServer(onController)", messageArrayFromServer);
         $scope.messages = messageArrayFromServer;
@@ -89,14 +87,9 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
     $scope.myLoggedInUser = "";
 
-    $scope.testOutService = function() {
-      $scope.getMessages($scope.currentClassId);
-      $scope.myLoggedInUser = lobbyService.myNewVar;
-      console.log("$scope.myLoggedInUser", $scope.myLoggedInUser);
-      return $scope.myLoggedInUser;
-    };
 
-    $scope.testOutService();
+
+
 
     $scope.addStudents = function() {
       ngDialog.open({
@@ -119,7 +112,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
       userService.postNewUser(newUserToAdd)
         .then(function(response) {
-          console.log("aiejfiejfijeijf", response);
+
           $scope.loggedInUser = response.data;
           var loggedInUserId = {
             id: response.data._id
@@ -141,12 +134,10 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
     $scope.filledInStar = true;
 
-    $scope.starMessage = function(message) {
-      for (var i = 0; i < $scope.messages; i++) {
-        if (messages[i].content === message.content) {
+    $scope.starMessage = function(index) {
+          $scope.messages[index].filledin = true;
           $scope.filledInStar = !$scope.filledInStar;
-        }
-      }
+
     }
 
     // function getUsersInClass(classId) {

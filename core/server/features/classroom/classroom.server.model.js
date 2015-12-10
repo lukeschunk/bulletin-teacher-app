@@ -15,7 +15,9 @@ var mongoose = require('mongoose'),
           {
             content: { type: String},
             date: {type: Date, default: new Date},
-            sender: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false}
+            sender: {type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+            starredBy: [{type: mongoose.Schema.Types.ObjectId}]
+
           }
         ]
 

@@ -1,4 +1,5 @@
 var Classroom = require('./classroom.server.model');
+var mongoose = require('mongoose');
 
 exports.getClassrooms = function (req, res, next) {
 
@@ -35,9 +36,14 @@ exports.getMessagesFromClassroom = function(req, res, next) {
 };
 
 exports.postNewMessageOnClassroom = function(req, res, next) {
+  console.log("this is req.body.sender", req.body.sender);
   Classroom.findById(req.params.id)
     .exec(function(err, classroom) {
-      classroom.messagesInClass.push(req.body);
+      classroom.messagesInClass.push({
+        content: req.body.content,
+        date: req.body.date,
+        sender: mongoose.Types.ObjectId(req.body.sender)
+      });
       classroom.save(function(err, data) {
         if(err) res.send(err);
         else res.status(200).send(data);

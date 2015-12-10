@@ -51,7 +51,7 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
             console.log("response[0]", response[0].classesBelongTo[0]);
             $scope.currentLoggedInUser = response[0];
             var loginClassId = response[0].classesBelongTo[0];
-            $state.go('mainLobby', {"classId":loginClassId});
+            $state.go('mainLobby', {"classId":loginClassId, "userId":$scope.currentLoggedInUser._id});
             lobbyService.saveLoggedInUserData($scope.currentLoggedInUser);
 
           })
@@ -102,7 +102,7 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
             .then(function(response) {
               console.log("This is RESPONSE", response);
               lobbyService.saveLoggedInUserData(response);
-              $state.go('mainLobby', {"classId":$scope.currentClass._id });
+              $state.go('mainLobby', {"classId":$scope.currentClass._id, "userId":$scope.currentUser._id });
             })
 
         })
