@@ -33,16 +33,18 @@
   <div scroll-glue="glued" class="right-body" id="right-body">
 
     <ul>
-      <li scroll-glue ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}} SENDER: {{message.sender.firstName}}
+      <li ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}} SENDER: {{message.sender.firstName}}
+        <div>
         <img class="messageImage" src="{{message.sender.image}}" alt="">
-        <!-- <span> <div class="testey"><img src="assets/star.png"></div></span> -->
+        </div>
+
         <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
         <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
       </li>
     </ul>
   </div>
 
-  <div ng-hide="rightBodySidebar" class="right-body-sidebar">
+  <!-- <div ng-hide="rightBodySidebar" class="right-body-sidebar">
     <div class="student-pull-up">
       <div class="image-holder">
           <img src="{{studentToPullUp.image}}" >
@@ -51,7 +53,7 @@
 
     </div>
 
-  </div>
+  </div> -->
 
 <div class="right-body-bottom">
 
