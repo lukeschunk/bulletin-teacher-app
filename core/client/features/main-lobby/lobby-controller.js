@@ -26,6 +26,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
           //SOCKET
           socketService.emit('message', $scope.messages);
           console.log("THIS IS %SCOPE>MESSAGES", $scope.messages);
+          $scope.glued = true;
           // getUsersInClass(classId);
         })
     };
@@ -73,6 +74,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       if (messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
         console.log("this is messageArrayFromServer(onController)", messageArrayFromServer);
         $scope.messages = messageArrayFromServer;
+        $scope.glued = true;
         $scope.$digest();
       }
     });

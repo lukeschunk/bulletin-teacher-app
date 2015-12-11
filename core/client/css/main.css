@@ -395,12 +395,12 @@ footer {
 
 .right-body {
   float: left;
-  height: 84vh;
+  height: 500px;
   width: 73%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
-  float: left;
+
 }
 
 .right-body-bottom {
