@@ -15,17 +15,12 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.getMessages = function(classId) {
       messageService.getMessages(classId)
         .then(function(response) {
-          console.log("this is get messages response on getMessages controller", response);
           $scope.usersInClass = response.usersInClass;
-          console.log("This is $scope.usersInClass", $scope.usersInClass);
-
-
           $scope.populatedClass = response;
-          console.log("this is POPULATED CLASS", $scope.populatedClass);
           $scope.messages = $scope.populatedClass.messagesInClass;
           //SOCKET
           socketService.emit('message', $scope.messages);
-          console.log("THIS IS %SCOPE>MESSAGES", $scope.messages);
+
           $scope.glued = true;
           // getUsersInClass(classId);
         })
@@ -48,9 +43,11 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       console.log("XX_messageText", messageText);
       console.log("XX_ClassId", currentClassId);
       console.log("XX_userId", userId);
+      console.log("moment", moment().startOf('day').fromNow());
+      var myDate = new Date()
       var newMessage = {
         content: messageText,
-        date: new Date(),
+        date: moment().calendar(),
         sender: userId
       };
 
@@ -139,8 +136,8 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.filledInStar = true;
 
     $scope.starMessage = function(index) {
-          $scope.messages[index].filledin = true;
-          $scope.filledInStar = !$scope.filledInStar;
+      $scope.messages[index].filledin = true;
+      $scope.filledInStar = !$scope.filledInStar;
 
     }
 
@@ -156,11 +153,12 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       $scope.rightBodySideBar = !$scope.rightBodySideBar;
       console.log("this is studentToPullUp", studentToPullUp);
       $scope.studentToPullUp = {
-        firsName: studentToPullUp.firstName,
+        firstName: studentToPullUp.firstName,
         lastName: studentToPullUp.lastName,
         email: studentToPullUp.email,
         image: studentToPullUp.image
       }
     }
 
-  }]);
+  }
+]);
