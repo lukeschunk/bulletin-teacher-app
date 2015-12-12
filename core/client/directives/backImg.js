@@ -4,10 +4,9 @@ bulletinApp.directive('backImg', function() {
     element.css({
       'background-image': 'url('+ url + ')',
       'background-size': 'cover',
-      'width': '80px',
-      'height': '80px',
+      'width': '60px',
+      'height': '60px',
       'display': 'inline-block'
-
     });
   };
 });

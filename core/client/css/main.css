@@ -396,30 +396,44 @@ footer {
 .right-body {
   float: left;
   height: 600px;
-  width: 73%;
+  max-width: 70%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
+}
 
+
+.right-body-full {
+  float: left;
+  height: 600px;
+  max-width: 100%;
+  background-color: white;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.right-body-sidebar-hidden {
+  display: none;
 }
 
 .right-body-bottom {
-  height: 10vh;
+  height: 200px;
   margin-top: 30px;
-  width: 70%;
-  position: absolute;
-  bottom: 0px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
   background-color: green;
   padding-top: 30px;
 }
 
 .right-body-sidebar {
-  width: 27%;
-  float: left;
+  width: 30%;
   height: 100vh;
+  background-color: blue;
+  float: left;
 }
 .right-body-bottom input {
-  width: 90%;
+  width: 100%;
   margin: auto;
   margin-left: 30px;
 }
@@ -475,4 +489,33 @@ footer {
 
 .fill {
   display: none;
+}
+
+.image-block {
+  float: left;
+  display: inline-block;
+}
+
+.message-block {
+  display: inline-block;
+  margin-left: 40px;
+  max-width: 600px;
+}
+
+.message-block h4, h5 {
+  margin: 0;
+  display: inline-block;
+}
+
+.message-block p {
+  margin-top: 8px;
+}
+
+.message-block h5 {
+  color: gray;
+  font-weight: lighter;
+}
+
+ul li {
+  list-style-type: none;
 }

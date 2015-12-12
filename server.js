@@ -25,7 +25,7 @@ var io = socketio(http);
 
 io.on('connection', function (socket) {
    console.log("a user has connected");
-    socket.on('message', function (messages) { // event listener
+    socket.on('myEmitter', function (messages) { // event listener
         console.log("the server just got a message!", messages);
         io.sockets.emit('messageFromServer', messages);
         });

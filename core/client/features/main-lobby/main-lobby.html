@@ -1,4 +1,4 @@
-<div class="lobby-container">
+<div class="lobby-container" >
 
   <div>
     <img src="../../assets/logo-01.png">
@@ -12,7 +12,7 @@
         <div id="hidden-scroll">
           <div id="scrolling-div">
             <li ng-repeat="student in usersInClass">
-              <button ng-click="lookAtStudent(student)"> <i class="fa fa-minus-square-o"></i>{{student.firstName}} {{student.lastName}} </button>
+              <button ng-click="lookAtStudent(student)"class="student-name"> <i class=" fa fa-minus-square-o"></i>{{student.firstName}} {{student.lastName}} </button>
             </li>
           </div>
         </div>
@@ -30,28 +30,49 @@
   <header>
     <h1>TEST TEST TEST</h1>
   </header>
-  <div scroll-glue="glued" class="right-body" id="right-body">
+  <div class="right-body-both">
+  <div scroll-glue="glued" ng-class="rightBodyClass" ng-click="hideSidebar()" >
 
     <ul>
 
       <li scroll-glue="glued" ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}} SENDER: {{message.sender.firstName}}
 
       <li ng-repeat="message in messages">
-        <div class="">
-        <h4>{{message.sender.firstName}} {{message.sender.lastName}}</h4>
-        <h5> {{message.date}} </h5>
+
+<div class="">
+        <div class="image-block" back-img="{{message.sender.image}}"> </div>
+
+        <div class="message-block">
+          <span>
+        <h4>{{message.sender.firstName}} {{message.sender.lastName}}</h4> <h5> {{message.date}} </h5>
+      </span>
+
         <p> {{message.content }}</p>
         </div>
-        <div back-img="{{message.sender.image}}"> </div>
 
+</div>
 
         <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
         <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
       </li>
     </ul>
+
+
   </div>
 
-  <div ng-hide="rightBodySidebar" class="right-body-sidebar">
+  <div class="right-body-bottom">
+
+    <input type="text" placeholder="This is my nice input box" ng-model="messageText">
+    <br>
+    <button ng-click="postNewMessage(messageText, currentClassId, currentUserId)"> Click to Submit</button>
+    <button ng-click="getUsers()"> This is button two</button>
+    <button ng-click="addStudents()"> ADD STUDENTS </button>
+
+  </div>
+
+</div>
+
+  <div ng-class="rightBodySideBarClass">
     <div class="student-pull-up">
       <div class="image-holder">
           <img src="{{studentToPullUp.image}}" >
@@ -62,15 +83,7 @@
 
   </div>
 
-<div class="right-body-bottom">
 
-  <input type="text" placeholder="This is my nice input box" ng-model="messageText">
-  <br>
-  <button ng-click="postNewMessage(messageText, currentClassId, currentUserId)"> Click to Submit</button>
-  <button ng-click="getUsers()"> This is button two</button>
-  <button ng-click="addStudents()"> ADD STUDENTS </button>
-
-</div>
 </div>
 
   <!-- DROPZONE -->

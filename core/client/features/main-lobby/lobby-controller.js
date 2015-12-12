@@ -19,7 +19,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
           $scope.populatedClass = response;
           $scope.messages = $scope.populatedClass.messagesInClass;
           //SOCKET
-          socketService.emit('message', $scope.messages);
+          socketService.emit('myEmitter', $scope.messages);
 
           $scope.glued = true;
           // getUsersInClass(classId);
@@ -68,6 +68,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     socketService.on('messageFromServer', function(messageArrayFromServer) {
       console.log("SOCKET_this is messageArrayFromServer", messageArrayFromServer);
       console.log("SOCKET_message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
+
       if (messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
         console.log("this is messageArrayFromServer(onController)", messageArrayFromServer);
         $scope.messages = messageArrayFromServer;
@@ -139,17 +140,20 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       $scope.messages[index].filledin = true;
       $scope.filledInStar = !$scope.filledInStar;
 
+    };
+
+    $scope.hideSidebar = function() {
+      $scope.rightBodyClass = "right-body-full";
+      $scope.rightBodySideBarClass = "right-body-sidebar-hidden";
     }
 
-    // function getUsersInClass(classId) {
-    //   classroomService.getUsersInClass(classId)
-    //     .then(function(response) {
-    //       console.log("this is getUsersInClass", response);
-    //     })
-    // };
-    $scope.rightBodySideBar = true;
 
     $scope.lookAtStudent = function(studentToPullUp) {
+      if($scope.rightBodyClass !== "right-body") {
+
+      $scope.rightBodyClass = "right-body";
+      $scope.rightBodySideBarClass = "right-body-sidebar";
+    }
       $scope.rightBodySideBar = !$scope.rightBodySideBar;
       console.log("this is studentToPullUp", studentToPullUp);
       $scope.studentToPullUp = {
@@ -160,5 +164,9 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
       }
     }
 
-  }
-]);
+
+    $scope.rightBodyClass = "right-body-full";
+    $scope.rightBodySideBarClass = "right-body-sidebar-hidden";
+
+
+  }]);
