@@ -1,4 +1,4 @@
-<div class="lobby-container" >
+<div class="lobby-container">
 
   <div>
     <img src="../../assets/logo-01.png">
@@ -11,8 +11,9 @@
         <li class="list"> STUDENTS </li>
         <div id="hidden-scroll">
           <div id="scrolling-div">
+                      <button ng-click="addStudents()"> ADD STUDENTS </button>
             <li ng-repeat="student in usersInClass">
-              <button ng-click="lookAtStudent(student)"class="student-name"> <i class=" fa fa-minus-square-o"></i>{{student.firstName}} {{student.lastName}} </button>
+              <button ng-click="lookAtStudent(student)" class="student-name"> <i class=" fa fa-minus-square-o"></i>{{student.firstName}} {{student.lastName}} </button>
             </li>
           </div>
         </div>
@@ -31,53 +32,56 @@
     <h1>TEST TEST TEST</h1>
   </header>
   <div class="right-body-both">
-  <div scroll-glue="glued" ng-class="rightBodyClass" ng-click="hideSidebar()" >
+    <div scroll-glue="glued" ng-class="rightBodyClass" ng-click="hideSidebar()">
 
-    <ul>
+      <ul>
 
-      <li scroll-glue="glued" ng-repeat="message in messages"> {{message.content}} DATE: {{message.date}} SENDER: {{message.sender.firstName}}
 
-      <li ng-repeat="message in messages">
 
-<div class="">
-        <div class="image-block" back-img="{{message.sender.image}}"> </div>
+        <li ng-repeat="message in messages">
 
-        <div class="message-block">
-          <span>
-        <h4>{{message.sender.firstName}} {{message.sender.lastName}}</h4> <h5> {{message.date}} </h5>
-      </span>
+          <div class="">
+            <div class="image-block" back-img="{{message.sender.image}}"> </div>
 
-        <p> {{message.content }}</p>
-        </div>
+            <div class="message-block">
+              <span>
+                <h4>{{message.sender.firstName}} {{message.sender.lastName}}</h4>
+                <h5> {{message.date}} </h5>
+              </span>
 
-</div>
+              <p> {{message.content }}</p>
+            </div>
 
-        <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
-        <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
-      </li>
-    </ul>
+          </div>
 
+          <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
+          <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
+        </li>
+      </ul>
+
+
+    </div>
+
+    <div ng-class="rightBodyBottomClass">
+      <form ng-submit="postNewMessage(messageText, currentClassId, currentUserId)">
+        <textarea rows="1" msd-elastic id="message-input" type="text" placeholder="This is my nice input box" ng-model="messageText">
+        </textarea>
+          <br>
+          <button ng-class="submitClass" type="submit"> Click to Submit</button>
+
+
+
+      </form>
+    </div>
 
   </div>
-
-  <div class="right-body-bottom">
-
-    <input type="text" placeholder="This is my nice input box" ng-model="messageText">
-    <br>
-    <button ng-click="postNewMessage(messageText, currentClassId, currentUserId)"> Click to Submit</button>
-    <button ng-click="getUsers()"> This is button two</button>
-    <button ng-click="addStudents()"> ADD STUDENTS </button>
-
-  </div>
-
-</div>
 
   <div ng-class="rightBodySideBarClass">
     <div class="student-pull-up">
       <div class="image-holder">
-          <img src="{{studentToPullUp.image}}" >
+        <img src="{{studentToPullUp.image}}">
       </div>
-       <h1> {{studentToPullUp.firstName}} {{studentToPullUp.lastName}}</h1>
+      <h1> {{studentToPullUp.firstName}} {{studentToPullUp.lastName}}</h1>
 
     </div>
 
@@ -86,27 +90,27 @@
 
 </div>
 
-  <!-- DROPZONE -->
+<!-- DROPZONE -->
 
 
-  <!-- DROPZONE -->
+<!-- DROPZONE -->
 
-  <script type="text/ng-template" id="addStudents">
-    <h1> Add Students to Your Class </h1>
-    <form ng-model="myForm" ng-submit="addNewStudent(newStudent)">
-      <input ng-model="newStudent.firstName" placeholder="First Name">
-      <input ng-model="newStudent.lastName" placeholder="Last Name">
+<script type="text/ng-template" id="addStudents">
+  <h1> Add Students to Your Class </h1>
+  <form ng-model="myForm" ng-submit="addNewStudent(newStudent)">
+    <input ng-model="newStudent.firstName" placeholder="First Name">
+    <input ng-model="newStudent.lastName" placeholder="Last Name">
 
-      <input ng-model="newStudent.email" placeholder="Email">
+    <input ng-model="newStudent.email" placeholder="Email">
 
-      <input ng-model="newStudent.image" placeholder="imageUrl">
+    <input ng-model="newStudent.image" placeholder="imageUrl">
 
-      <h3> Note: Student Password by Default will be Firstname.lastname </h3>
+    <h3> Note: Student Password by Default will be Firstname.lastname </h3>
 
-      <button class="ngdialog-button ngdialog-button-primary" type="submit">Add Student</button>
-    </form>
+    <button class="ngdialog-button ngdialog-button-primary" type="submit">Add Student</button>
+  </form>
 
-    <button class="ngdialog-button ngdialog-button-primary" ng-click="closeModal()"> Done </button>
+  <button class="ngdialog-button ngdialog-button-primary" ng-click="closeModal()"> Done </button>
 
 
-  </script>
+</script>

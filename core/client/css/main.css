@@ -303,6 +303,12 @@ footer {
 ========================================================================================================================================
 ========================================================================================================================================
 */
+.right-body-main header {
+  background-color: rgba(50, 50, 50, .2);
+  width: 100%;
+  border-bottom: 1px solid gray;
+  height: 60px;
+}
 
 .lobby-container div:nth-child(1) {
   width: 240px;
@@ -341,7 +347,6 @@ footer {
 }
 
 .communities {
-  margin-left: 35px;
   text-align: left;
   position: relative;
 }
@@ -395,21 +400,23 @@ footer {
 
 .right-body {
   float: left;
-  height: 600px;
-  max-width: 70%;
+  height: 587px;
+  width: 75%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
+  background-color: pink;
 }
 
 
 .right-body-full {
   float: left;
-  height: 600px;
-  max-width: 100%;
+  height: 587px;
+  width: 100%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
+    background-color: pink;
 }
 
 .right-body-sidebar-hidden {
@@ -417,9 +424,19 @@ footer {
 }
 
 .right-body-bottom {
-  height: 200px;
-  margin-top: 30px;
+  height: 100px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-color: green;
+  padding-top: 30px;
+}
+
+.right-body-bottom-collapsed {
+  height: 100px;
+  width: 75%;
+  position: absolute;
   bottom: 0;
   left: 0;
   background-color: green;
@@ -427,15 +444,29 @@ footer {
 }
 
 .right-body-sidebar {
-  width: 30%;
-  height: 100vh;
+  width: 25%;
+  height: calc(100vh - 60px);
   background-color: blue;
-  float: left;
+  float: right;
 }
-.right-body-bottom input {
-  width: 100%;
+.right-body-bottom textarea {
+  width: 80%;
   margin: auto;
   margin-left: 30px;
+  border-radius: 30px;
+  padding-left: 27px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.right-body-bottom-collapsed textarea {
+  width: 80%;
+  margin: auto;
+  margin-left: 30px;
+  border-radius: 30px;
+  padding-left: 27px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .right-body-main button {
@@ -518,4 +549,16 @@ footer {
 
 ul li {
   list-style-type: none;
+}
+
+.submit {
+  position: absolute;
+  left: 700px;
+  top: 35px;
+}
+
+.submit-collapsed {
+  position: absolute;
+  left: 500px;
+  top: 35px;
 }

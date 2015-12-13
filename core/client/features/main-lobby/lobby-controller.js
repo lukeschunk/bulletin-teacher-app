@@ -145,15 +145,19 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.hideSidebar = function() {
       $scope.rightBodyClass = "right-body-full";
       $scope.rightBodySideBarClass = "right-body-sidebar-hidden";
+      $scope.rightBodyBottomClass = "right-body-bottom";
+      $scope.submitClass = "submit";
     }
 
 
     $scope.lookAtStudent = function(studentToPullUp) {
-      if($scope.rightBodyClass !== "right-body") {
+      if ($scope.rightBodyClass !== "right-body") {
 
-      $scope.rightBodyClass = "right-body";
-      $scope.rightBodySideBarClass = "right-body-sidebar";
-    }
+        $scope.rightBodyClass = "right-body";
+        $scope.rightBodySideBarClass = "right-body-sidebar";
+        $scope.rightBodyBottomClass = "right-body-bottom-collapsed";
+        $scope.submitClass = "submit-collapsed";
+      }
       $scope.rightBodySideBar = !$scope.rightBodySideBar;
       console.log("this is studentToPullUp", studentToPullUp);
       $scope.studentToPullUp = {
@@ -167,6 +171,18 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
     $scope.rightBodyClass = "right-body-full";
     $scope.rightBodySideBarClass = "right-body-sidebar-hidden";
+    $scope.rightBodyBottomClass = "right-body-bottom";
+    $scope.submitClass = "submit";
+
+    var input = document.getElementById('message-input');
+    input.onkdyup = expandTextArea();
+
+    function expandTextArea() {
+      console.log("It's Working!");
+      input.style.height = "1px";
+      input.style.height = (25 + input.scrollHeight) + "px";
+    }
 
 
-  }]);
+  }
+]);

@@ -1,4 +1,4 @@
-var bulletinApp = angular.module("bulletinApp", ['ui.router', 'luegg.directives', 'ngDialog']);
+var bulletinApp = angular.module("bulletinApp", ['ui.router', 'luegg.directives', 'ngDialog', 'monospaced.elastic']);
 
 
 bulletinApp.config(function($stateProvider, $urlRouterProvider) {
