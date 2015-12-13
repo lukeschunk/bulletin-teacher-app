@@ -38,7 +38,7 @@
 
 
 
-        <li ng-repeat="message in messages">
+        <li class="list-item" ng-repeat="message in messages">
 
           <div class="">
             <div class="image-block" back-img="{{message.sender.image}}"> </div>
@@ -49,13 +49,19 @@
                 <h5> {{message.date}} </h5>
               </span>
 
+              <div id="message-content-holder">
               <p> {{message.content }}</p>
+              </div>
             </div>
 
+            <div class="star-block">
+            <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
+            <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
+
+            </div>
           </div>
 
-          <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
-          <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
+
         </li>
       </ul>
 
