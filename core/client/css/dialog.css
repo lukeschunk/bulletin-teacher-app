@@ -66,7 +66,7 @@
 /*ADD NEW STUDENTS*/
 
 #add-students {
-  height: 450px;
+  height: 480px;
   width: 400px;
   position: relative;
 }
@@ -95,9 +95,11 @@
 }
 
 #add-one {
-  bottom: 20px;
+  bottom: 10px;
+  left: 70px;
 }
 
 #add-two {
-  
+  bottom: 10px;
+  right: 70px;
 }

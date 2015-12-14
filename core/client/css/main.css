@@ -313,9 +313,9 @@ footer {
 
 .right-body-main header h1 {
   font-weight: lighter;
-  color: gray;
-  padding-top: 15px;
-  padding-left: 20px;
+  color: rgba(125, 125, 125, .5);
+  padding-top: 27px;
+  padding-left: 40px;
   font-size: 1.5em;
 
 }
@@ -414,6 +414,7 @@ footer {
 .student-name {
   padding-top: 8px;
   padding-bottom: 8px;
+
 }
 
 .add-students {
@@ -423,7 +424,6 @@ footer {
   margin-right: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-
 }
 
 .plus {
@@ -634,7 +634,8 @@ ul li {
 }
 
 .list-item:hover {
-  background-color: rgb(230, 230, 230);
+  background-color: rgba(180, 120, 200, .2);
+  cursor: pointer;
 }
 
 .star-block {
@@ -648,13 +649,13 @@ ul li {
     display: block;
     background: 0;
     border: 0;
-    border-bottom: 3px solid #fff;
-    color: #009ac9;
+    border-bottom: 3px solid #009ac9;
+    color: gray;
     outline: none;
     text-align: left;
     width: 80%;
     border-bottom-width: 2px;
-    font-size: 1em;
+    font-size: 1.3em;
 }
 
 .submit {
