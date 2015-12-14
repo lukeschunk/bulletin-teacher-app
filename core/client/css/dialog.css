@@ -1,0 +1,103 @@
+/*CREATE NEW CLASS*/
+#create-new-class {
+  height: 400px;
+  position: relative;
+
+}
+
+#create-new-class input {
+    margin: 0 auto;
+    display: block;
+    background: 0;
+    border: 0;
+    border-bottom: 3px solid #fff;
+    color: #009ac9;
+    outline: none;
+    text-align: left;
+    width: 80%;
+    border-bottom-width: 2px;
+    font-size: 1.5em;
+    margin-top: 25px;
+}
+
+#create-new-class button {
+  margin-top: 25px;
+  margin-left: 120px;
+  text-align: center;
+
+}
+
+#second-prompt {
+  height: 220px;
+}
+
+#second-prompt button {
+  margin-left: 120px;
+  text-align: center;
+}
+
+/*LOGIN*/
+#login-prompt {
+  height: 220px
+}
+
+#login-prompt button {
+  margin-top: 25px;
+  margin-left: 160px;
+  text-align: center;
+}
+
+#login-prompt input {
+  margin: 0 auto;
+  display: block;
+  background: 0;
+  border: 0;
+  border-bottom: 3px solid #fff;
+  color: #009ac9;
+  outline: none;
+  text-align: left;
+  width: 80%;
+  border-bottom-width: 2px;
+  font-size: 1.5em;
+  margin-top: 25px;
+}
+
+
+/*ADD NEW STUDENTS*/
+
+#add-students {
+  height: 450px;
+  width: 400px;
+  position: relative;
+}
+
+#add-students h1 {
+  line-height: 40px;;
+}
+
+#add-students input {
+  margin: 0 auto;
+  display: block;
+  background: 0;
+  border: 0;
+  border-bottom: 3px solid #fff;
+  color: #009ac9;
+  outline: none;
+  text-align: left;
+  width: 80%;
+  border-bottom-width: 2px;
+  font-size: 1.5em;
+  margin-top: 25px;
+}
+
+#add-students button {
+  position: absolute;
+}
+
+#add-one {
+  bottom: 20px;
+}
+
+#add-two {
+  
+}

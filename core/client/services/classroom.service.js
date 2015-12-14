@@ -23,6 +23,13 @@ bulletinApp.service('classroomService', function($http, $q) {
       .then(function (response) {
           return response.data;
       })
+  };
+
+  this.getClassById = function(classId) {
+    return $http.get('/api/classroom/current/:id' + classId)
+      .then(function(response) {
+        return response.data
+      })
   }
 
 

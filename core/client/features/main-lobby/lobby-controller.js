@@ -10,6 +10,17 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.currentClassId = $stateParams.classId;
     $scope.currentUserId = $stateParams.userId.toString();
 
+
+
+    $scope.getClassById = function(classId) {
+      classroomService.getClassById(classId)
+        .then(function(response) {
+          $scope.className = response.test; //SOMETHING
+        })
+    }
+    $scope.getClassById($scope.currentClassId);
+
+
     console.log("This is currentUSERID", $scope.currentUserId);
     //GET MESSAGES
     $scope.getMessages = function(classId) {

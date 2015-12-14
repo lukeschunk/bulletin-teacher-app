@@ -70,6 +70,10 @@ exports.updateClassWithUser = function(req, res, next) {
         else res.status(200).send(data);
       })
     })
+};
+
+exports.getClassById = function(req, res, next) {
+
 }
 
 

@@ -13,4 +13,7 @@ module.exports = function (app) {
 
   app.route('/api/classroom/users/:id')
     .post(Ctrl.updateClassWithUser);
+
+  app.route('/api/classroom/current/:id')
+    .get(Ctrl.getClassById);
 }

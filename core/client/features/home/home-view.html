@@ -1,41 +1,44 @@
 <div id="home-background">
 
-    <!--    _____________________________________________MAIN NAV_____________________________________________-->
-    <nav>
-        <img src="../../assets/logo-white-01.png">
-        <ul>
-            <li><a ng-click="clickToOpenLoginPrompt()" class="white" href="#">Login</a></li>
-            <li><a class="white" href="#">Home</a></li>
-            <li><a class="white" href="#">News</a></li>
-            <li><a class="find-teacher white" href="contact.asp">Students or Parents – Find Your Class</a></li>
-            <li><a class="find-teacher white" href="contact.asp">Menu</a></li>
-        </ul>
-    </nav>
+  <!--    _____________________________________________MAIN NAV_____________________________________________-->
+  <nav>
+    <img src="../../assets/logo-white-01.png">
+    <ul>
+      <li><a ng-click="clickToOpenLoginPrompt()" class="white" href="#">Login</a></li>
+      <li><a class="white" href="#">Home</a></li>
+      <li><a class="white" href="#">News</a></li>
+      <li><a class="find-teacher white" href="contact.asp">Students or Parents – Find Your Class</a></li>
+      <li><a class="find-teacher white" href="contact.asp">Menu</a></li>
+    </ul>
+  </nav>
 
 
-    <!--    ____________________________________________BODY OF PAGE____________________________________________-->
-    <section class="body-content">
-        <div class="header-block">
-            <h1 class="white"> Communicate with your classroom <br> like never before. </h1>
-            <h1 class="white"> Talking with your students during the school day is easy, but what about when they go home? Stuff happens. Students forget homework. Parents have questions. Teachers get stressed. Bulletin helps alleviate a bit of that stress. Sign up your class below. </h1>
-            <div class="create-box">
+  <!--    ____________________________________________BODY OF PAGE____________________________________________-->
+  <section class="body-content">
+    <div class="header-block">
+      <h1 class="white"> Communicate with your classroom
+        <br> like never before. </h1>
+      <h1 class="white"> Talking with your students during the school day is easy, but what about when they go home? Stuff happens. Students forget homework. Parents have questions. Teachers get stressed. Bulletin helps alleviate a bit of that stress. Sign up your class
+        below. </h1>
+      <div class="create-box">
 
-                <div class="create-box-text-container">
-                    <h3 class="white"> Bulletin is free to use. <br> Enter your class name to sign up! </h3>
-                </div>
-
-
-                <div class="create-box-input-container">
-                <input placeholder="ex: Miss Paige's Class" ng-model="className">
-
-                <button  ng-click="clickToOpen()"> Create a New Class </button>
-                </div>
-            </div>
+        <div class="create-box-text-container">
+          <h3 class="white"> Bulletin is free to use.
+            <br> Enter your class name to sign up! </h3>
         </div>
-    </section>
 
-    <!--    _____________________________________________FOOTER_____________________________________________-->
-<!--
+
+        <div class="create-box-input-container">
+          <input placeholder="ex: Miss Paige's Class" ng-model="className">
+
+          <button class="submit" ng-click="clickToOpen()"> Create a New Class </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--    _____________________________________________FOOTER_____________________________________________-->
+  <!--
     <footer>
 
 
@@ -48,35 +51,36 @@
 <!--    _____________________________________CREATE USER MODAL__________________________________________-->
 
 <script type="text/ng-template" id="createNewTemplate">
-<div ng-show="showMe">
-<h1>{{className}}</h1>
-<form ng-submit="createNewClass()">
-  <input ng-model="newUser.firstName" placeholder="First Name">
-  <input ng-model="newUser.lastName" placeholder="Last Name">
+  <div id="create-new-class" ng-show="showMe">
+    <h1>{{className}}</h1>
+    <form ng-submit="createNewClass()">
+      <input ng-model="newUser.firstName" placeholder="First Name">
+      <input ng-model="newUser.lastName" placeholder="Last Name">
 
-  <input ng-model="newUser.email" placeholder="Email">
+      <input ng-model="newUser.email" placeholder="Email">
 
-  <input ng-model="newUser.password" placeholder="Password">
+      <input type="password" ng-model="newUser.password" placeholder="Password">
 
-  <input ng-model="newUser.image" placeholder="imageUrl">
+      <input ng-model="newUser.image" placeholder="imageUrl">
 
-  <button class="ngdialog-button ngdialog-button-primary" ng-click="postNewUser(newUser)">Create New User</button>
-
-
-
-</form>
-
-</div>
+      <button class="submit" ng-click="postNewUser(newUser)">Create New User</button>
 
 
-<div ng-hide="showMe">
-<h1>{{className}}</h1>
 
-<h2> "Great! Thanks for making a new class, {{newUser.firstName }}. Let's show you to your new class lobby!"</h2>
+    </form>
 
-<button class="ngdialog-button ngdialog-button-primary" ng-click="goToLobby()">Take Me To My Class!</button>
+  </div>
 
-</div>
+
+  <div id="second-prompt" ng-hide="showMe">
+    <h1>{{className}}</h1>
+
+    <h2> Great! </h2>
+    <h3>Thanks for making a new class. Lets show you to your new class lobby! </h3>
+
+    <button class="submit" ng-click="goToLobby()">Take Me To My Class!</button>
+
+  </div>
 
 </script>
 
@@ -84,12 +88,13 @@
 <!--    _____________________________________LOGIN MODAL__________________________________________-->
 
 <script type="text/ng-template" id="loginTemplate">
-<form ng-submit="login(loginUser.email, loginUser.password)">
-  <h1>Login</h1>
-  <input type="text" ng-model="loginUser.email" placeholder="Email">
-  <input type="text" ng-model="loginUser.password" placeholder="Password">
-  <button type="submit"> Login </button>
-</form>
-
+  <div id="login-prompt">
+    <form ng-submit="login(loginUser.email, loginUser.password)">
+      <h1>Login</h1>
+      <input type="text" ng-model="loginUser.email" placeholder="Email">
+      <input type="password" ng-model="loginUser.password" placeholder="Password">
+      <button class="submit" type="submit"> Login </button>
+    </form>
+  </div>
 
 </script>

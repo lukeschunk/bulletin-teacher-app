@@ -8,18 +8,18 @@
     <div class="communities">
 
       <ul>
-        <li class="list"> STUDENTS </li>
+        <li class="list student-name"> YOUR CLASS </li>
         <div id="hidden-scroll">
           <div id="scrolling-div">
-            <button class="add-students" ng-click="addStudents()"> ADD STUDENTS </button>
+            <button class="add-students" ng-click="addStudents()"> Add Students  <i class="plus fa fa-plus"></i> </button>
             <li ng-repeat="student in usersInClass">
-              <button ng-click="lookAtStudent(student)" class="student-name"> <i class=" fa fa-minus-square-o"></i>{{student.firstName}} {{student.lastName}} </button>
+              <button ng-click="lookAtStudent(student)" class="student-name"> {{student.firstName}} {{student.lastName}} </button>
             </li>
           </div>
         </div>
         <li>
           <button ng-click="changeSettings()" class="settings">
-            <i class="fa fa-cogs"></i></button>
+            <i class="fa fa-lg fa-cogs"></i></button>
         </li>
 
     </div>
@@ -55,8 +55,8 @@
             </div>
 
             <div class="star-block">
-              <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
-              <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
+              <!-- <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
+              <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span> -->
 
             </div>
           </div>
@@ -83,12 +83,15 @@
   </div>
 
   <div ng-class="rightBodySideBarClass">
-    <div class="student-pull-up">
-      <div class="image-holder">
-        <img src="{{studentToPullUp.image}}">
-      </div>
+        <div class="student-pull-up">
+    <div class="image-holder">
+      <img src="{{studentToPullUp.image}}">
+    </div>
+
+
       <h1> {{studentToPullUp.firstName}} {{studentToPullUp.lastName}}</h1>
-      <h2> {{studentToPullUp.id}}</h2>
+      <p> <strong> Student Email: </strong> {{studentToPullUp.email}}</p>
+      <p> <strong> Student ID: </strong> {{studentToPullUp.id}}</p>
       <button class="submit" ng-click="deleteStudent(studentToPullUp.id)">Delete Student </button>
     </div>
 
@@ -103,6 +106,7 @@
 <!-- DROPZONE -->
 
 <script type="text/ng-template" id="addStudents">
+<div id="add-students">
   <h1> Add Students to Your Class </h1>
   <form ng-model="myForm" ng-submit="addNewStudent(newStudent)">
     <input ng-model="newStudent.firstName" placeholder="First Name">
@@ -112,13 +116,13 @@
 
     <input ng-model="newStudent.image" placeholder="imageUrl">
 
-    <h3> Note: Student Password by Default will be Firstname.lastname </h3>
+    <h3> Note: Student Password by Default will be Firstname.Lastname </h3>
 
-    <button class="ngdialog-button ngdialog-button-primary" type="submit">Add Student</button>
+    <button id="add-one" class="submit" type="submit">Add Student</button>
   </form>
 
-  <button class="ngdialog-button ngdialog-button-primary" ng-click="closeModal()"> Done </button>
-
+  <button id="add-two" class="submit" ng-click="closeModal()"> Done </button>
+</div>
 
 </script>
 
@@ -128,7 +132,7 @@
 
   <label>Allow Students to Message in Lobby
     <span>
-      <input type="checkbox" class="ios-switch green  bigswitch" checked />
+      <input type="checkbox" class="ios-switch blue  bigswitch" checked />
       <div>
         <div></div>
       </div>
@@ -136,7 +140,7 @@
 
   </label>
   <label>Allow Students to Direct messagesInClass
-    <input type="checkbox" class="ios-switch green  bigswitch" checked />
+    <input type="checkbox" class="ios-switch blue  bigswitch" checked />
     <div>
       <div></div>
     </div>
