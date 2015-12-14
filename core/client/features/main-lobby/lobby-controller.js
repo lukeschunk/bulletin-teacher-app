@@ -90,7 +90,12 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.myLoggedInUser = "";
 
 
-
+    $scope.changeSettings = function () {
+      ngDialog.open({
+        template:'changeSettings',
+        scope: $scope
+      });
+    };
 
 
     $scope.addStudents = function() {
@@ -130,6 +135,20 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
 
     };
 
+    $scope.deleteStudent =function(studentId) {
+      console.log("this is studentId", studentId);
+      userService.deleteStudent(studentId)
+        .then(function(response) {
+          $scope.getMessages($scope.currentClassId);
+          console.log("student has been deleted i think");
+          //CHANGING CLASSES
+          $scope.rightBodyClass = "right-body-full";
+          $scope.rightBodySideBarClass = "right-body-sidebar-hidden";
+          $scope.rightBodyBottomClass = "right-body-bottom";
+          $scope.submitClass = "submit";
+        })
+    }
+
     $scope.closeModal = function() {
       ngDialog.closeAll();
     };
@@ -158,13 +177,14 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
         $scope.rightBodyBottomClass = "right-body-bottom-collapsed";
         $scope.submitClass = "submit-collapsed";
       }
-      $scope.rightBodySideBar = !$scope.rightBodySideBar;
+      // $scope.rightBodySideBar = !$scope.rightBodySideBar;
       console.log("this is studentToPullUp", studentToPullUp);
       $scope.studentToPullUp = {
         firstName: studentToPullUp.firstName,
         lastName: studentToPullUp.lastName,
         email: studentToPullUp.email,
-        image: studentToPullUp.image
+        image: studentToPullUp.image,
+        id: studentToPullUp._id
       }
     }
 

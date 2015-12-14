@@ -51,17 +51,17 @@ exports.postUser = function (req, res, next) {
 // };
 
 
-exports.deleteUser = function (req, res, next) {
-    console.log("okay baby");
-    console.log("req.params.id", req.params.id);
-    User.findById(req.params.id)
-        .remove(function (err) {
-
-            if (err) res.status(500).send(err);
-            else res.status(204).send('Removed');
-        });
-
-};
+// exports.deleteUser = function (req, res, next) {
+//     console.log("okay baby");
+//     console.log("req.params.id", req.params.id);
+//     User.findById(req.params.id)
+//         .remove(function (err) {
+//
+//             if (err) res.status(500).send(err);
+//             else res.status(204).send('Removed');
+//         });
+//
+// };
 
 exports.login = function(req, res, next) {
   console.log("this is req.body", req.body);
@@ -84,5 +84,13 @@ exports.updateUserWithClassId = function (req, res, next) {
         if(err) return res.status(500).send(err);
         else res.send(updatedUser);
       })
+  })
+};
+
+exports.deleteUser = function(req, res, next) {
+  console.log("This is being hit BABY");
+  User.findByIdAndRemove(req.params.id, req.body, function(err, result) {
+    if(err) return res.status(500).send(err);
+    else res.send(result);
   })
 }

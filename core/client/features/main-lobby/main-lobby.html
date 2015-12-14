@@ -1,25 +1,25 @@
 <div class="lobby-container">
 
   <div>
-    <img src="../../assets/logo-01.png">
+    <img src="../../assets/logo-white-01.png">
 
     <hr>
-    <h3 class="white"> Miss. Paige's Class</h3>
+    <h3 class="white">  Miss. Paige's Class</h3>
     <div class="communities">
 
       <ul>
         <li class="list"> STUDENTS </li>
         <div id="hidden-scroll">
           <div id="scrolling-div">
-                      <button ng-click="addStudents()"> ADD STUDENTS </button>
+            <button class="add-students" ng-click="addStudents()"> ADD STUDENTS </button>
             <li ng-repeat="student in usersInClass">
               <button ng-click="lookAtStudent(student)" class="student-name"> <i class=" fa fa-minus-square-o"></i>{{student.firstName}} {{student.lastName}} </button>
             </li>
           </div>
         </div>
         <li>
-          <button>
-            <span> + </span>...</button>
+          <button ng-click="changeSettings()" class="settings">
+            <i class="fa fa-cogs"></i></button>
         </li>
 
     </div>
@@ -50,13 +50,13 @@
               </span>
 
               <div id="message-content-holder">
-              <p> {{message.content }}</p>
+                <p> {{message.content }}</p>
               </div>
             </div>
 
             <div class="star-block">
-            <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
-            <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
+              <span> <i ng-show="filledInStar" ng-click="starMessage($index)" ng-class="" class="star fa-lg fa fa-star-o"></i> </span>
+              <span> <i ng-hide="filledInStar" ng-click="starMessage($index)" class="star fa-lg fa fa-star"></i> </span>
 
             </div>
           </div>
@@ -70,10 +70,10 @@
 
     <div ng-class="rightBodyBottomClass">
       <form ng-submit="postNewMessage(messageText, currentClassId, currentUserId)">
-        <textarea rows="1" msd-elastic id="message-input" type="text" placeholder="This is my nice input box" ng-model="messageText">
-        </textarea>
-          <br>
-          <button ng-class="submitClass" type="submit"> Click to Submit</button>
+        <input rows="1" msd-elastic id="message-input" type="text" contenteditable="true" placeholder="This is my nice input box" ng-model="messageText">
+        </input>
+        <br>
+        <button ng-class="submitClass" type="submit"> Click to Send</button>
 
 
 
@@ -88,7 +88,8 @@
         <img src="{{studentToPullUp.image}}">
       </div>
       <h1> {{studentToPullUp.firstName}} {{studentToPullUp.lastName}}</h1>
-
+      <h2> {{studentToPullUp.id}}</h2>
+      <button class="submit" ng-click="deleteStudent(studentToPullUp.id)">Delete Student </button>
     </div>
 
   </div>
@@ -118,5 +119,27 @@
 
   <button class="ngdialog-button ngdialog-button-primary" ng-click="closeModal()"> Done </button>
 
+
+</script>
+
+
+<script type="text/ng-template" id="changeSettings">
+  <h1> Update Settings</h1>
+
+  <label>Allow Students to Message in Lobby
+    <span>
+      <input type="checkbox" class="ios-switch green  bigswitch" checked />
+      <div>
+        <div></div>
+      </div>
+    </span>
+
+  </label>
+  <label>Allow Students to Direct messagesInClass
+    <input type="checkbox" class="ios-switch green  bigswitch" checked />
+    <div>
+      <div></div>
+    </div>
+  </label>
 
 </script>

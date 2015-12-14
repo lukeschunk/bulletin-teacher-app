@@ -52,7 +52,22 @@ bulletinApp.service('userService', function ($http, $q) {
         console.log(error);
         return "Error";
     })
-  }
+  };
+
+  this.deleteStudent = function(userId) {
+    return $http({
+      method: 'DELETE',
+      url: '/api/users/delete/' + userId,
+      dataType: 'json',
+      data: userId
+    }).then(function(response) {
+      console.log(response);
+      return 'user deleted';
+    }, function(error) {
+      console.log(error);
+      return "error";
+    })
+  };
 
 
 

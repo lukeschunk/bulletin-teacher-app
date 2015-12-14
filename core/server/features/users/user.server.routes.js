@@ -14,4 +14,7 @@ module.exports = function (app) {
     app.route('/api/users/login')
       .post(Ctrl.login);
 
+    app.route('/api/users/delete/:id')
+      .delete(Ctrl.deleteUser);
+
 };
