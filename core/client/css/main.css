@@ -443,18 +443,38 @@ footer {
 
 .right-body {
   float: left;
-  height: 587px;
+  height: 70vh;
   width: 75%;
   background-color: white;
   position: relative;
   overflow-y: scroll;
-
 }
 
+@media all and (max-width: 1100px) {
+  .right-body-main .right-body {
+    float: left;
+    height: 60vh;
+    width: 75%;
+    background-color: white;
+    position: relative;
+    overflow-y: scroll;
+  }
+}
+
+@media all and (max-width: 1100px) {
+  .right-body-main .right-body-full {
+    float: left;
+    height: 60vh;
+    width: 75%;
+    background-color: white;
+    position: relative;
+    overflow-y: scroll;
+  }
+}
 
 .right-body-full {
   float: left;
-  height: 587px;
+  height: 70vh;
   width: 100%;
   background-color: white;
   position: relative;
