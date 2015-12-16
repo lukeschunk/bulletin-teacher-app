@@ -70,7 +70,7 @@
 
     <div ng-class="rightBodyBottomClass">
       <form ng-submit="postNewMessage(messageText, currentClassId, currentUserId)">
-        <input rows="1" msd-elastic id="message-input" type="text" contenteditable="true" placeholder="This is my nice input box" ng-model="messageText">
+        <input rows="1" msd-elastic id="message-input" type="text" contenteditable="true" placeholder="Type your message here..." ng-model="messageText">
         </input>
         <br>
         <button ng-class="submitClass" type="submit"> Click to Send</button>
