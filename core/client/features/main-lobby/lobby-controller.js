@@ -79,7 +79,7 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     socketService.on('messageFromServer', function(messageArrayFromServer) {
       console.log("SOCKET_this is messageArrayFromServer", messageArrayFromServer);
       console.log("SOCKET_message in socket", messageArrayFromServer[0].sender.classesBelongTo[0]);
-
+	  console.log("this is $scope.currentClassId", $scope.currentClassId);
       if (messageArrayFromServer[0].sender.classesBelongTo[0] === $scope.currentClassId) {
         console.log("this is messageArrayFromServer(onController)", messageArrayFromServer);
         $scope.messages = messageArrayFromServer;

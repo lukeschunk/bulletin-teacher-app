@@ -6,13 +6,12 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
 
 
 
-
     //NG Dialog Modal Toggeling Panes
 
     $scope.showMe = true;
 
     $scope.next = function() {
-      if ($scope.showMe) {
+    if ($scope.showMe) {
         $scope.showMe = '';
       } else {
         $scope.showMe = true;
@@ -28,10 +27,10 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
     }
 
     //at End of 'Create a New Class Modal'
-        $scope.goToLobby = function() {
-            $scope.postNewClass($scope.newUser);
-            ngDialog.closeAll();
-          };
+    $scope.goToLobby = function() {
+      $scope.postNewClass($scope.newUser);
+      ngDialog.closeAll();
+    };
 
 
 
@@ -43,20 +42,23 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
       });
     }
 
-      //At End of 'Login Modal', grabs user by LoginInfo
-      $scope.login = function(loginUserEmail, loginUserPassword) {
-        userService.getUserByLogin(loginUserEmail, loginUserPassword)
-          .then(function(response) {
-            console.log("alksjdglk", response);
-            console.log("response[0]", response[0].classesBelongTo[0]);
-            $scope.currentLoggedInUser = response[0];
-            var loginClassId = response[0].classesBelongTo[0];
-            $state.go('mainLobby', {"classId":loginClassId, "userId":$scope.currentLoggedInUser._id});
-            lobbyService.saveLoggedInUserData($scope.currentLoggedInUser);
+    //At End of 'Login Modal', grabs user by LoginInfo
+    $scope.login = function(loginUserEmail, loginUserPassword) {
+      userService.getUserByLogin(loginUserEmail, loginUserPassword)
+        .then(function(response) {
+          console.log("alksjdglk", response);
+          console.log("response[0]", response[0].classesBelongTo[0]);
+          $scope.currentLoggedInUser = response[0];
+          var loginClassId = response[0].classesBelongTo[0];
+          $state.go('mainLobby', {
+            "classId": loginClassId,
+            "userId": $scope.currentLoggedInUser._id
+          });
+          lobbyService.saveLoggedInUserData($scope.currentLoggedInUser);
 
-          })
-          ngDialog.closeAll();
-      }
+        })
+      ngDialog.closeAll();
+    }
 
 
     //CRUD FUNCTIONS
@@ -102,7 +104,10 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
             .then(function(response) {
               console.log("This is RESPONSE", response);
               lobbyService.saveLoggedInUserData(response);
-              $state.go('mainLobby', {"classId":$scope.currentClass._id, "userId":$scope.currentUser._id });
+              $state.go('mainLobby', {
+                "classId": $scope.currentClass._id,
+                "userId": $scope.currentUser._id
+              });
             })
 
         })

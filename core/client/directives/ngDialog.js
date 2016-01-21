@@ -5,6 +5,7 @@
  */
 
 (function (root, factory) {
+    console.log('root', root);
     if (typeof module !== 'undefined' && module.exports) {
         // CommonJS
         if (typeof angular === 'undefined') {
