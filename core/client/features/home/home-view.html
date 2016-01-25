@@ -7,8 +7,8 @@
       <li><a ng-click="clickToOpenLoginPrompt()" class="white" href="#">Login</a></li>
       <li><a class="white" href="#">Home</a></li>
       <li><a class="white" href="#">News</a></li>
-      <li><a class="find-teacher white" href="contact.asp">Students or Parents – Find Your Class</a></li>
-      <li><a class="find-teacher white" href="contact.asp">Menu</a></li>
+      <li><a class="find-teacher white" href="#">Students or Parents – Find Your Class</a></li>
+      <li><a class="find-teacher white" href="#">Menu</a></li>
     </ul>
   </nav>
 
@@ -91,10 +91,35 @@
   <div id="login-prompt">
     <form ng-submit="login(loginUser.email, loginUser.password)">
       <h1>Login</h1>
-      <input type="text" ng-model="loginUser.email" placeholder="Email">
+      <input id="login-email-input" type="text" ng-model="loginUser.email" placeholder="Email">
       <input type="password" ng-model="loginUser.password" placeholder="Password">
       <button class="submit" type="submit"> Login </button>
     </form>
+  </div>
+
+</script>
+
+<!--    ____________________________________TEST MODAL__________________________________________-->
+<script type="text/ng-template" id="testTemplate">
+  <div class="welcome-test-prompt">
+
+	  <h1 class="welcome-test-heading"> Welcome... </h1>
+	  <hr />
+      <h2 class="welcome-test-subtext">Thanks for Checking Out My App</h1>
+      <p class="welcome-test-p">
+	In order to quickly and easily experience Bulletin, I have autofilled the login prompt modal with a test email and password. </p>
+	<p class="welcome-test-p">
+	 This will
+	allow you to quickly view a sample classroom.
+	</p>
+	<p class="welcome-test-p">
+	Also, feel free to create a new class!
+	</p>
+	<p class="welcome-test-p-small">
+		Note: Some links have been disabled for show version.
+	</p>
+
+
   </div>
 
 </script>

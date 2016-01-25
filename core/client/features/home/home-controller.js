@@ -3,6 +3,10 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
     $scope.test = "Hey there buddy";
     //NG DIALOGS
 
+	$scope.loginUser = {
+		email: "markzuckerberg@gmail.com",
+		password: "Mark.Zuckerberg"
+	}
 
 
 
@@ -32,7 +36,13 @@ bulletinApp.controller("homeController", ["$scope", "ngDialog", "userService", "
       ngDialog.closeAll();
     };
 
-
+	$scope.openTestModal = function() {
+		ngDialog.open({
+			template: 'testTemplate',
+			scope: $scope
+		});
+	}
+	$scope.openTestModal();
 
     //opens 'Login' Modal
     $scope.clickToOpenLoginPrompt = function() {

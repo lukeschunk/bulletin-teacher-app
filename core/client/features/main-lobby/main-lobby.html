@@ -1,10 +1,10 @@
 <div class="lobby-container">
 
   <div>
-    <img src="../../assets/logo-white-01.png">
+    <img id="home-logo" ui-sref="home" src="../../assets/logo-white-01.png">
 `
     <hr>`
-    <h3 class="white">  Classroom Notes </h3>
+    <h3 class="white" ng-click="openNotesModal()">  Classroom Notes </h3>
     <div class="communities">
 
       <ul>
@@ -103,7 +103,7 @@
 <!-- DROPZONE -->
 
 
-<!-- DROPZONE -->
+<!-- -=========================  Add Students Modal   -->
 
 <script type="text/ng-template" id="addStudents">
 <div id="add-students">
@@ -126,6 +126,7 @@
 
 </script>
 
+<!-- -========================= changeSettings MODAL  -->
 
 <script type="text/ng-template" id="changeSettings">
   <h1> Update Settings</h1>
@@ -145,5 +146,15 @@
       <div></div>
     </div>
   </label>
+
+</script>
+
+<!-- -=========================  Add Students Modal   -->
+
+<script type="text/ng-template" id="classroomNotes">
+	<div class="classroom-notes-modal">
+		<h1> Classroom Notes</h1>
+		<textarea name="" id="" cols="30" rows="10"></textarea>
+	</div>
 
 </script>

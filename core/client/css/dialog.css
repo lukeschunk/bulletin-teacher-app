@@ -58,7 +58,7 @@
   text-align: left;
   width: 80%;
   border-bottom-width: 2px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   margin-top: 25px;
 }
 
@@ -66,9 +66,10 @@
 /*ADD NEW STUDENTS*/
 
 #add-students {
-  height: 480px;
+  height: 510px;
   width: 400px;
   position: relative;
+  padding: 14px;
 }
 
 #add-students h1 {

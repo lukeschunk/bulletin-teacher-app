@@ -1,0 +1,25 @@
+.welcome-test-prompt {
+	padding: 14px;
+}
+
+.welcome-test-heading {
+	color: #009ac9;
+}
+
+.welcome-test-subtext {
+	font-size: 1.2em;
+}
+
+.welcome-test-p {
+	line-height: 1.6em;
+}
+
+
+.welcome-test-p-small {
+	font-size: 0.8em;
+	line-height: 1.3em;
+}
+
+#home-logo {
+	cursor: pointer;
+}

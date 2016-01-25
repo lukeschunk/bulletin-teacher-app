@@ -426,6 +426,10 @@ footer {
   padding-bottom: 10px;
 }
 
+.modal-add-students {
+	padding: 20px;
+}
+
 .plus {
   margin-left: 5px;
 }

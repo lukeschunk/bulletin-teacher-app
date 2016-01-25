@@ -10,7 +10,12 @@ bulletinApp.controller("lobbyController", ["$scope", "messageService", "userServ
     $scope.currentClassId = $stateParams.classId;
     $scope.currentUserId = $stateParams.userId.toString();
 
-
+	$scope.openNotesModal = function() {
+		ngDialog.open({
+			template: 'classroomNotes',
+			scope: $scope
+		});
+	}
 
     $scope.getClassById = function(classId) {
       classroomService.getClassById(classId)
